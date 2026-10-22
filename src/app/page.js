@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
+import { GitHubCalendar } from "react-github-calendar";
 
 const Lanyard = dynamic(() => import("@/components/Lanyard"), {
   ssr: false,
@@ -20,6 +21,20 @@ const PROJECT_ICONS = {
     <svg className="w-10 h-10" fill="none" stroke="currentColor" strokeWidth="1" viewBox="0 0 24 24">
       <path d="M12 2a10 10 0 0 1 10 10c0 5.523-4.477 10-10 10S2 17.523 2 12A10 10 0 0 1 12 2z" />
       <path d="M12 6v6l4 2" />
+    </svg>
+  ),
+  workgank: (
+    <svg className="w-10 h-10" fill="none" stroke="currentColor" strokeWidth="1" viewBox="0 0 24 24">
+      <path d="M4 18l5-6 4 3 7-9" />
+      <path d="M20 6h-5v5" />
+      <path d="M3 20h18" />
+    </svg>
+  ),
+  "dana-redesign": (
+    <svg className="w-10 h-10" fill="none" stroke="currentColor" strokeWidth="1" viewBox="0 0 24 24">
+      <rect x="3" y="5" width="18" height="14" rx="3" />
+      <path d="M7 9h10M7 15h6" />
+      <path d="M17 9l-2 6" />
     </svg>
   ),
 };
@@ -95,10 +110,45 @@ const CONTENT = {
           demo: null,
           placeholderText: "Leaf Pathology Scanner • WebGL Quantized Classifier",
         },
+        {
+          id: "workgank",
+          title: "Workgank Industry",
+          year: "2024",
+          image: "/assets/projects/Workgank.png",
+          description:
+            "Field monitoring and crop advisory dashboard designed to track plant-health signals, sensor conditions, and intervention priorities across farm operations.",
+          tags: {
+            Frontend: ["PHP", "JavaScript"],
+            Database: ["MySQL"],
+          },
+          contribution:
+            "Designed the operations dashboard, alerting logic, and real-time field telemetry workflows to help teams monitor crop health and prioritize interventions faster.",
+          github: null,
+          demo: null,
+          placeholderText: "Field Monitoring Dashboard • Sensor Health Overview",
+        },
+        {
+          id: "dana-redesign",
+          title: "DANA Redesign",
+          year: "2025",
+          image: "/assets/projects/dana-redesign.png",
+          description:
+            "Mobile finance experience redesign focused on a cleaner digital wallet flow, stronger transaction clarity, and a more persuasive account overview for everyday users.",
+          tags: {
+            Frontend: ["Flutter"],
+            UX: ["User Flow", "Mobile UX"],
+            Research: ["Wireframe", "Prototype"]
+          },
+          contribution:
+            "Restructured the transaction experience and payment journey into a more intuitive mobile-first layout, improving visual hierarchy and reducing friction in key user actions.",
+          github: "https://github.com/dimzkuy/repo-PPB-Team-4-Redesign-DANA",
+          demo: null,
+          placeholderText: "Fintech Mobile Flow • Wallet Redesign System",
+        },
       ],
     },
     experience: {
-      index: "03",
+      index: "04",
       title: "EXPERIENCE",
       subtitle: "Chronological Record",
       rolePrefix: "ROLE",
@@ -154,7 +204,7 @@ const CONTENT = {
       ],
     },
     skills: {
-      index: "04",
+      index: "05",
       title: "TECHNICAL SKILLS",
       subtitle: "Competency Matrix",
       setPrefix: "SET",
@@ -190,7 +240,7 @@ const CONTENT = {
       ],
     },
     education: {
-      index: "05",
+      index: "06",
       title: "EDUCATION",
       subtitle: "Academic Credentials",
       prefix: "ACADEMIC",
@@ -218,20 +268,18 @@ const CONTENT = {
       ],
     },
     contact: {
-      index: "06",
+      index: "07",
       title: "CONTACT",
       subtitle: "Direct Telemetry",
-      ledger: "COMMUNICATION LEDGER",
-      heading: "Initiate Technical Consultation",
+      heading: "Let's Talk!",
       subtext:
-        "Open to software engineering roles, distributed systems challenges, and edge machine learning contracts. Send queries directly or connect across verified channels.",
-      cta: "Get in Touch",
+        "Open to new opportunities, collaborations, and conversations about software engineering, cloud technologies, and innovative ideas.",
       channelHeader: "VERIFIED CHANNELS // DIRECT DISPATCH",
       response: "RESPONSE: <24H",
       channels: [
-        { label: "Primary Transmission", value: "dcmargono@gmail.com", href: "mailto:dcmargono@gmail.com", icon: "arrow_forward" },
-        { label: "Code Repositories", value: "github.com/dimzkuy", href: "https://github.com/dimzkuy", icon: "north_east" },
-        { label: "Network Profile", value: "linkedin.com/in/dcmargono", href: "https://www.linkedin.com/in/dcmargono/", icon: "north_east" },
+        { label: "Email", value: "dcmargono@gmail.com", href: "mailto:dcmargono@gmail.com", icon: "arrow_forward" },
+        { label: "GitHub", value: "github.com/dimzkuy", href: "https://github.com/dimzkuy", icon: "north_east" },
+        { label: "LinkedIn", value: "linkedin.com/in/dcmargono", href: "https://www.linkedin.com/in/dcmargono/", icon: "north_east" },
       ],
       security: "SECURITY: PGP KEY 0x82A1",
       availability: "AVAILABILITY: OPEN",
@@ -255,6 +303,7 @@ const CONTENT = {
     nav: [
       { href: "#about", label: "Tentang" },
       { href: "#projects", label: "Proyek" },
+      { href: "#github", label: "Aktivitas GitHub" },
       { href: "#experience", label: "Pengalaman" },
       { href: "#skills", label: "Keahlian" },
       { href: "#education", label: "Pendidikan" },
@@ -320,10 +369,51 @@ const CONTENT = {
           demo: null,
           placeholderText: "Pemindai Patologi Daun • WebGL Quantized Classifier",
         },
+        {
+          id: "workgank",
+          title: "Workgank Industry",
+          year: "2024",
+          image: "/assets/projects/Workgank.png",
+          description:
+            "Dashboard pemantauan lahan dan advisori tanaman yang dirancang untuk melacak sinyal kesehatan tanaman, kondisi sensor, serta prioritas intervensi di seluruh operasi pertanian.",
+          tags: {
+            Frontend: ["Next.js", "React"],
+            Backend: ["Node.js", "Supabase"],
+            "Data Ops": ["Realtime Metrics", "Alerts"],
+          },
+          contribution:
+            "Merancang dashboard operasional, logika peringatan, dan alur telemetri lapangan secara real-time agar tim bisa memantau kesehatan tanaman dan memprioritaskan intervensi lebih cepat.",
+          github: null,
+          demo: null,
+          placeholderText: "Dashboard Pemantauan Lahan • Gambaran Kesehatan Sensor",
+        },
+        {
+          id: "dana-redesign",
+          title: "DANA Redesign",
+          year: "2025",
+          image: "/assets/projects/dana-redesign.png",
+          description:
+            "Redesign pengalaman dompet digital berfokus pada alur transaksi yang lebih bersih, informasi saldo yang lebih jelas, dan overview akun yang lebih persuasif untuk pengguna sehari-hari.",
+          tags: {
+            Frontend: ["Next.js", "UI Design"],
+            UX: ["User Flow", "Mobile UX"],
+            Research: ["Wireframe", "Prototype"],
+          },
+          contribution:
+            "Menyusun ulang pengalaman transaksi dan alur pembayaran ke dalam layout mobile-first yang lebih intuitif, memperbaiki hierarki visual, dan mengurangi hambatan dalam langkah utama pengguna.",
+          github: null,
+          demo: null,
+          placeholderText: "Alur Mobile Fintech • Sistem Redesign Dompet",
+        },
       ],
     },
-    experience: {
+    github: {
       index: "03",
+      title: "AKTIVITAS GITHUB",
+      subtitle: "Catatan Kontribusi",
+    },
+    experience: {
+      index: "04",
       title: "PENGALAMAN",
       subtitle: "Rekam Jejak Kronologis",
       rolePrefix: "PERAN",
@@ -379,7 +469,7 @@ const CONTENT = {
       ],
     },
     skills: {
-      index: "04",
+      index: "05",
       title: "KEAHLIAN TEKNIS",
       subtitle: "Matriks Kompetensi",
       setPrefix: "KUMPULAN",
@@ -415,7 +505,7 @@ const CONTENT = {
       ],
     },
     education: {
-      index: "05",
+      index: "06",
       title: "PENDIDIKAN",
       subtitle: "Kredensial Akademik",
       prefix: "AKADEMIK",
@@ -443,23 +533,22 @@ const CONTENT = {
       ],
     },
     contact: {
-      index: "06",
+      index: "07",
       title: "KONTAK",
       subtitle: "Telemetri Langsung",
-      ledger: "BUKU KOMUNIKASI",
-      heading: "Mulai Konsultasi Teknis",
+      heading: "Mari Berbicara!",
       subtext:
-        "Terbuka untuk posisi software engineering, tantangan sistem terdistribusi, dan proyek kontrak edge machine learning. Kirim pesan langsung atau terhubung melalui saluran terverifikasi.",
+        "Terbuka untuk peluang baru, kolaborasi, dan diskusi tentang rekayasa perangkat lunak, teknologi cloud, serta ide inovatif.",
       cta: "Hubungi Saya",
-      channelHeader: "SALURAN TERVERIFIKASI // PESAN LANGSUNG",
-      response: "RESPONS: <24 JAM",
+      channelHeader: "VERIFIED CHANNELS // DIRECT DISPATCH",
+      response: "RESPONSE: <24H",
       channels: [
-        { label: "Transmisi Utama", value: "dcmargono@gmail.com", href: "mailto:dcmargono@gmail.com", icon: "arrow_forward" },
-        { label: "Repositori Kode", value: "github.com/dimzkuy", href: "https://github.com/dimzkuy", icon: "north_east" },
-        { label: "Profil Jaringan", value: "linkedin.com/in/dimaskuy", href: "#", icon: "north_east" },
+        { label: "Email", value: "dcmargono@gmail.com", href: "mailto:dcmargono@gmail.com", icon: "arrow_forward" },
+        { label: "GitHub", value: "github.com/dimzkuy", href: "https://github.com/dimzkuy", icon: "north_east" },
+        { label: "LinkedIn", value: "linkedin.com/in/dcmargono", href: "https://www.linkedin.com/in/dcmargono/", icon: "north_east" },
       ],
-      security: "KEAMANAN: KUNCI PGP 0x82A1",
-      availability: "KETERSEDIAAN: TERBUKA",
+      security: "SECURITY: PGP KEY 0x82A1",
+      availability: "AVAILABILITY: OPEN",
     },
     footer: {
       archiveTitle: "INDEKS // ARSIP & PRAKTIK",
@@ -470,8 +559,11 @@ const CONTENT = {
       navItems: [
         { href: "#about", label: "01 / Tentang" },
         { href: "#projects", label: "02 / Proyek" },
-        { href: "#experience", label: "03 / Pengalaman" },
-        { href: "#contact", label: "04 / Kontak" },
+        { href: "#github", label: "03 / Aktivitas GitHub" },
+        { href: "#experience", label: "04 / Pengalaman" },
+        { href: "#skills", label: "05 / Keahlian" },
+        { href: "#education", label: "06 / Pendidikan" },
+        { href: "#contact", label: "07 / Kontak" },
       ],
       copyright: "Hak cipta dilindungi undang-undang.",
     },
@@ -517,6 +609,290 @@ function Tag({ children }) {
   );
 }
 
+// # GitHub Contribution Graph Component
+function GitHubContributionGraph() {
+  const githubUsername = "dimzkuy";
+  const [isMounted, setIsMounted] = useState(false);
+  const [selectedYear, setSelectedYear] = useState(2026);
+  const [totalContributions, setTotalContributions] = useState(0);
+  const [allTimeContributions, setAllTimeContributions] = useState(0);
+  const [currentStreak, setCurrentStreak] = useState(0);
+  const [longestStreak, setLongestStreak] = useState(0);
+  const yearOptions = [2026, 2025, 2024, 2023, 2022];
+  const panelStyle = {
+    background: "#F5F1EF",
+    border: "1.5px solid #3D1106",
+    boxShadow: "5px 5px 0px 0px #3D1106",
+  };
+
+  const calculateStreaks = (entries) => {
+    if (!Array.isArray(entries) || entries.length === 0) {
+      return { current: 0, longest: 0 };
+    }
+
+    const normalizedEntries = entries.map((entry) => ({
+      ...entry,
+      count: Number(entry.count) || 0,
+    }));
+
+    let current = 0;
+    for (let index = normalizedEntries.length - 1; index >= 0; index -= 1) {
+      if ((normalizedEntries[index].count || 0) > 0) {
+        current += 1;
+      } else {
+        break;
+      }
+    }
+
+    let longest = 0;
+    let streakRun = 0;
+
+    normalizedEntries.forEach((entry) => {
+      if ((entry.count || 0) > 0) {
+        streakRun += 1;
+        longest = Math.max(longest, streakRun);
+      } else {
+        streakRun = 0;
+      }
+    });
+
+    return { current, longest };
+  };
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!isMounted) return;
+
+    let isCancelled = false;
+
+    fetch(`https://github-contributions-api.jogruber.de/v4/${githubUsername}?y=${selectedYear}&client=portfolio`)
+      .then((response) => response.json())
+      .then((data) => {
+        if (isCancelled || !data || !Array.isArray(data.contributions)) return;
+
+        const total = data.contributions.reduce((sum, item) => sum + (Number(item.count) || 0), 0);
+        setTotalContributions(total);
+      })
+      .catch(() => {
+        if (!isCancelled) setTotalContributions(0);
+      });
+
+    fetch(`https://github-contributions-api.jogruber.de/v4/${githubUsername}?client=portfolio`)
+      .then((response) => response.json())
+      .then((data) => {
+        if (isCancelled || !data || !Array.isArray(data.contributions)) return;
+
+        const total = data.contributions.reduce((sum, item) => sum + (Number(item.count) || 0), 0);
+        setAllTimeContributions(total);
+
+        const streaks = calculateStreaks(data.contributions);
+        setCurrentStreak(streaks.current);
+        setLongestStreak(streaks.longest);
+      })
+      .catch(() => {
+        if (!isCancelled) {
+          setAllTimeContributions(0);
+          setCurrentStreak(0);
+          setLongestStreak(0);
+        }
+      });
+
+    return () => {
+      isCancelled = true;
+    };
+  }, [githubUsername, isMounted, selectedYear]);
+
+  if (!isMounted) {
+    return (
+      <div className="mt-14">
+        <div
+          className="flex items-center justify-between gap-4 pb-2 mb-5"
+          style={{ borderBottom: "1.5px solid #3D1106" }}
+        >
+          <div className="flex items-center gap-2">
+            <span className="w-3 h-3 inline-block" style={{ background: "#3D1106" }} />
+            <h3 className="text-label-lg uppercase tracking-wider font-bold" style={{ color: "#242120" }}>
+              03 / Open Source Activity
+            </h3>
+          </div>
+          <span className="text-headline-sm italic" style={{ color: "#716966" }}>
+            Commit &amp; Dispatch Ledger [2024–2025]
+          </span>
+        </div>
+
+        <div style={panelStyle}>
+          <div className="px-4 py-5 md:px-6 md:py-6">
+            <div className="h-28 w-full rounded-[2px] border border-dashed border-[#3D1106]/40 bg-[#F6F0EE] animate-pulse" />
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="mt-14">
+      <div
+        className="flex items-center justify-between gap-4 pb-2 mb-5"
+        style={{ borderBottom: "1.5px solid #3D1106" }}
+      >
+        <div className="flex items-center gap-2">
+          <span className="w-3 h-3 inline-block" style={{ background: "#3D1106" }} />
+          <h3 className="text-label-lg uppercase tracking-wider font-bold" style={{ color: "#242120" }}>
+            03 / Open Source Activity
+          </h3>
+        </div>
+        <span className="text-headline-sm italic" style={{ color: "#716966" }}>
+          Commit &amp; Dispatch Ledger [2024–2025]
+        </span>
+      </div>
+
+      <div style={panelStyle}>
+        <div className="flex items-center justify-between gap-4 px-4 py-3 md:px-5" style={{ borderBottom: "1.5px solid #3D1106" }}>
+          <div className="flex items-center gap-2">
+            <span className="text-label-sm uppercase tracking-wider font-bold" style={{ color: "#3D1106" }}>
+              TELEMETRY // GITHUB REPOSITORIES
+            </span>
+          </div>
+
+          <div className="flex items-center gap-3 flex-wrap justify-end">
+            <span className="inline-flex items-center gap-2 px-3 py-1 text-label-sm uppercase" style={{ background: "#F6F0EE", border: "1px solid #3D1106", color: "#242120" }}>
+              CURRENT STREAK: <strong style={{ fontWeight: 700 }}>{currentStreak} {currentStreak === 1 ? "day" : "days"}</strong>
+            </span>
+            <span className="inline-flex items-center gap-2 px-3 py-1 text-label-sm uppercase" style={{ background: "#F6F0EE", border: "1px solid #3D1106", color: "#242120" }}>
+              LONGEST STREAK: <strong style={{ fontWeight: 700 }}>{longestStreak} {longestStreak === 1 ? "day" : "days"}</strong>
+            </span>
+            <a
+              href={`https://github.com/${githubUsername}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-3 py-1 text-label-sm uppercase font-bold transition-colors hover:translate-x-[1px] hover:translate-y-[1px]"
+              style={{ background: "#3D1106", color: "#fff", border: "1.5px solid #3D1106", boxShadow: "2px 2px 0px 0px #3D1106" }}
+            >
+              GITHUB.COM/{githubUsername.toUpperCase()}
+              <span className="material-symbols-outlined" style={{ fontSize: 14 }}>north_east</span>
+            </a>
+          </div>
+        </div>
+
+        <div className="px-4 py-3 md:px-6 md:py-4">
+          <div className="mb-2 flex items-center justify-between gap-6">
+            <div className="flex-1">
+              <div className="flex items-end gap-2">
+                <span className="text-display-mobile leading-none font-bold" style={{ color: "#242120" }}>
+                  GitHub Activity
+                </span>
+              </div>
+              <div className="mt-2 text-[13px] uppercase tracking-[0.08em]" style={{ color: "#3D1106" }}>
+                <span>{allTimeContributions.toLocaleString()} total contributions</span>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-2">
+              <label className="text-label-sm uppercase tracking-wider font-bold" style={{ color: "#3D1106" }} htmlFor="github-year-select">
+                Year
+              </label>
+              <div style={{ position: "relative" }}>
+                <select
+                  id="github-year-select"
+                  value={selectedYear}
+                  onChange={(event) => setSelectedYear(Number(event.target.value))}
+                  className="text-label-sm uppercase tracking-wider font-bold"
+                  style={{
+                    minWidth: "94px",
+                    padding: "0.6rem 2.2rem 0.6rem 0.8rem",
+                    border: "1.5px solid #3D1106",
+                    background: "#3D1106",
+                    color: "#F7F3F0",
+                    boxShadow: "3px 3px 0px 0px #3D1106",
+                    outline: "none",
+                    cursor: "pointer",
+                    appearance: "none",
+                    WebkitAppearance: "none",
+                    MozAppearance: "none",
+                    backgroundImage: "url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2712%27 height=%2712%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27%23F7F3F0%27 stroke-width=%272.5%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27%3E%3Cpath d=%27M6 9l6 6 6-6%27/%3E%3C/svg%3E')",
+                    backgroundRepeat: "no-repeat",
+                    backgroundPosition: "right 0.75rem center",
+                    backgroundSize: "12px 12px",
+                  }}
+                >
+                  {yearOptions.map((year) => (
+                    <option key={year} value={year} style={{ background: "#F6F0EE", color: "#3D1106" }}>
+                      {year}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div className="overflow-x-auto pb-2">
+            <div className="min-w-full" style={{ color: "#242120" }}>
+              <GitHubCalendar
+                username={githubUsername}
+                year={selectedYear}
+                color="#3D1106"
+                blockSize={11}
+                blockMargin={4}
+                fontSize={10}
+                style={{
+                  width: "100%",
+                  maxWidth: "100%",
+                  minWidth: "100%",
+                  fontFamily: "var(--font-sans)",
+                }}
+                blockRadius={2}
+                showColorLegend={false}
+                showTotalCount={false}
+                labels={{
+                  totalCount: "{{count}} contributions in {{year}}",
+                  legend: { less: "Less", more: "More" },
+                }}
+                theme={{
+                  light: ["#ebe1da", "#d7c1ae", "#c48d65", "#8a4b3d", "#3d1106"],
+                  dark: ["#ebe1da", "#d7c1ae", "#c48d65", "#8a4b3d", "#3d1106"],
+                }}
+              />
+            </div>
+          </div>
+
+          <div className="mt-4 pt-3 flex items-center justify-between gap-3" style={{ borderTop: "1.5px solid #3D1106" }}>
+            <div className="text-[10px] uppercase" style={{ color: "#716966" }}>
+              <span>{totalContributions} contributions in {selectedYear}</span>
+            </div>
+
+            <div className="flex items-center gap-2 text-[10px] uppercase" style={{ color: "#716966" }}>
+              <span>Less</span>
+              {[
+                "#f3efe9",
+                "#e0cbbd",
+                "#c68d6b",
+                "#8c4d3d",
+                "#3f1f19",
+              ].map((color, idx) => (
+                <span
+                  key={`${color}-${idx}`}
+                  style={{
+                    width: "11px",
+                    height: "11px",
+                    borderRadius: "2px",
+                    background: color,
+                    display: "inline-block",
+                    border: "1px solid rgba(61,17,6,0.08)",
+                  }}
+                />
+              ))}
+              <span>More</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // # Project Card Component
 function ProjectCard({ project, icon, labels }) {
   return (
@@ -531,7 +907,7 @@ function ProjectCard({ project, icon, labels }) {
       <div
         className="relative overflow-hidden flex flex-col items-center justify-center text-center bg-[#F5F1EF]"
         style={{
-          aspectRatio: "15/8",
+          aspectRatio: "16/9",
           borderBottom: "1.5px solid #3D1106",
         }}
       >
@@ -929,6 +1305,8 @@ export default function Home() {
               />
             ))}
           </div>
+
+          <GitHubContributionGraph />
         </section>
 
         {/* # Experience */}
