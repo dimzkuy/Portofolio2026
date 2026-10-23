@@ -14,9 +14,9 @@ const manrope = Manrope({
 });
 
 export const metadata = {
-  title: "Portofolio | Dimas Cahyo Margono",
+  title: "Dimas Cahyo Margono - Tech Enthusiast",
   description:
-    "Portfolio of Dimas Cahyo Margono. Specializing in robust web applications, machine learning integration, and high-performance interfaces.",
+    "Turning ideas into code, building useful applications, and exploring the technologies behind them.",
   keywords: ["software engineer", "full-stack", "machine learning", "portfolio"],
   icons: {
     icon: "/assets/icons/icon.png",
