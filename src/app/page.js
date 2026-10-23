@@ -303,7 +303,6 @@ const CONTENT = {
     nav: [
       { href: "#about", label: "Tentang" },
       { href: "#projects", label: "Proyek" },
-      { href: "#github", label: "Aktivitas GitHub" },
       { href: "#experience", label: "Pengalaman" },
       { href: "#skills", label: "Keahlian" },
       { href: "#education", label: "Pendidikan" },
