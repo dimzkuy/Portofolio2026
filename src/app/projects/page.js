@@ -10,7 +10,7 @@ const LABELS = {
     headerIndex: "01",
     headerTitle: "ALL PROJECTS",
     headerSubtitle: "Personal & College Projects",
-    backBtn: "Back to Home",
+    backBtn: "Home",
     placeholder: "[ SCREENSHOT PLACEHOLDER ]",
     contributionTitle: "My Contribution",
     githubBtn: "[ GitHub Repo ]",
@@ -111,6 +111,20 @@ function ProjectCard({ project, icon, labels }) {
             </div>
           </div>
         )}
+
+        {/* Top-left Badge */}
+        <div
+          className="absolute top-2 left-2 px-1.5 py-[2px] text-[9.5px] font-bold uppercase tracking-wider select-none pointer-events-none"
+          style={{
+            zIndex: 30,
+            background: "#F5F1EF",
+            color: "#3D1106",
+            border: "1px solid #3D1106",
+            boxShadow: "1.5px 1.5px 0px 0px #3D1106",
+          }}
+        >
+          {project.badge || "PROJECT"}
+        </div>
       </div>
 
       {/* # Body */}
@@ -212,7 +226,7 @@ export default function ProjectsPage() {
   return (
     <>
       {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-white" style={{ borderBottom: "1.5px solid #3D1106" }}>
+      <header className="fixed top-0 left-0 right-0 z-50 bg-white">
         <div className="h-16 max-w-[76rem] mx-auto flex items-center justify-end px-5 md:px-16">
           <div className="flex items-center gap-1.5 font-mono text-label-sm uppercase tracking-wider select-none">
             {["EN", "ID"].map((l, i) => (

@@ -4,18 +4,19 @@ export const PROJECTS = [
     id: "maizeai",
     title: "MaizeAI",
     year: "2026",
-    featured: true, // Shown on Homepage
+    featured: true,
+    badge: "Thesis Project",
     image: "/assets/projects/maizeai.png",
     github: "https://github.com/dimzkuy/MaizeAI",
     demo: null,
-    tags: ["Next.js", "Tailwind CSS", "FastAPI", "ONNX Runtime"],
+    tags: ["Next.js", "FastAPI", "ONNX Runtime", "Firebase", "Google Cloud"],
     description: {
       EN: "A web-based application for classifying corn leaf diseases from uploaded images using a machine learning model.",
       ID: "Aplikasi web untuk mengklasifikasikan penyakit daun jagung berdasarkan gambar yang diunggah menggunakan model machine learning."
     },
     contribution: {
-      EN: "Developed the web application using Next.js and integrated a FastAPI backend with an EfficientNetB0 model exported to ONNX for inference. Deployed the frontend and backend using Google Cloud services.",
-      ID: "Mengembangkan aplikasi web menggunakan Next.js serta mengintegrasikan backend FastAPI dengan model EfficientNetB0 yang diekspor ke format ONNX untuk inferensi. Melakukan deployment frontend dan backend menggunakan layanan Google Cloud."
+      EN: "Developed the web application using Next.js and integrated a FastAPI backend to serve an EfficientNetB0 image classification model exported to ONNX. Deployed the frontend using Firebase App Hosting and the backend on Google Cloud Run, with the model stored in Google Cloud Storage.",
+      ID: "Mengembangkan aplikasi web menggunakan Next.js dan mengintegrasikan backend FastAPI untuk menjalankan model klasifikasi citra EfficientNetB0 yang diekspor ke format ONNX. Melakukan deployment frontend menggunakan Firebase App Hosting dan backend di Google Cloud Run, serta menyimpan model di Google Cloud Storage."
     },
     placeholderText: {
       EN: "Agricultural Diagnosis UI • Neural Inference Console",
@@ -27,6 +28,7 @@ export const PROJECTS = [
     title: "Crop-Care",
     year: "2024",
     featured: true, // Shown on Homepage
+    badge: "Bangkit 2024 H2 Capstone Project",
     image: "/assets/projects/cropcare.png",
     github: "https://github.com/RafliFahri/Crop-Care",
     demo: null,
@@ -48,7 +50,8 @@ export const PROJECTS = [
     id: "workgank",
     title: "Workgank Industry",
     year: "2024",
-    featured: false,
+    featured: true,
+    badge: "College Project",
     image: "/assets/projects/Workgank.png",
     github: null,
     demo: null,
@@ -71,21 +74,23 @@ export const PROJECTS = [
     title: "DANA Redesign",
     year: "2025",
     featured: false, // Shown on /projects only
+    badge: "College Project",
     image: "/assets/projects/dana-redesign.png",
     github: "https://github.com/dimzkuy/repo-PPB-Team-4-Redesign-DANA",
     demo: null,
     tags: ["Flutter", "Figma"],
+
     description: {
-      EN: "A mobile digital wallet redesign focused on improving transaction flows, information hierarchy, and the clarity of key user interactions.",
-      ID: "Redesign aplikasi dompet digital yang berfokus pada penyempurnaan alur transaksi, hierarki informasi, dan kejelasan interaksi utama pengguna."
+      EN: "A mobile wallet redesign project focused on improving the DANA app experience through refined UI/UX design and the implementation of key registration, payment, and profile features.",
+      ID: "Proyek redesign aplikasi dompet digital yang berfokus pada peningkatan pengalaman pengguna DANA melalui penyempurnaan desain UI/UX dan implementasi fitur utama registrasi, pembayaran, dan profil."
     },
     contribution: {
-      EN: "Redesigned key transaction and payment flows, refining the mobile interface layout and visual hierarchy to create a clearer and more intuitive user experience.",
-      ID: "Mendesain ulang alur transaksi dan pembayaran utama serta menyempurnakan tata letak antarmuka mobile dan hierarki visual untuk menciptakan pengalaman pengguna yang lebih jelas dan intuitif."
+      EN: "Led a 5-member team, designed interfaces in Figma, and contributed to mobile development using Flutter and Firebase. Responsibilities included splash screen, registration and email verification interfaces, QR code scanning, and profile photo synchronization.",
+      ID: "Memimpin tim beranggotakan 5 orang, merancang antarmuka menggunakan Figma, dan berkontribusi dalam pengembangan aplikasi mobile dengan Flutter dan Firebase. Tanggung jawab mencakup antarmuka splash screen, registrasi dan verifikasi email, pemindaian QR code, serta sinkronisasi foto profil."
     },
     placeholderText: {
-      EN: "Fintech Mobile Flow • Wallet Redesign System",
-      ID: "Alur Mobile Fintech • Sistem Redesign Dompet",
+      EN: "Flutter • Firebase • Figma • Digital Wallet Redesign",
+      ID: "Flutter • Firebase • Figma • Redesign Dompet Digital"
     },
   },
 ];
@@ -132,6 +137,10 @@ export function getProjectsByLang(lang = "EN", featuredOnly = false) {
     github: p.github,
     demo: p.demo,
     tags: p.tags,
+    badge:
+      typeof p.badge === "object" && p.badge !== null
+        ? p.badge[lang] || p.badge.EN || "PROJECT"
+        : p.badge || "PROJECT",
     description:
       typeof p.description === "object"
         ? p.description[lang] || p.description.EN

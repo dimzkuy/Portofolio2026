@@ -722,7 +722,7 @@ function ProjectCard({ project, icon, labels }) {
       className="flex flex-col bg-white transition-transform hover:-translate-y-1"
       style={{
         border: "1.5px solid #3D1106",
-        boxShadow: "4px 4px 0px 0px #3D1106",
+        boxShadow: "3px 3px 0px 0px #3D1106",
       }}
     >
       {/* # Screenshot / Project Image */}
@@ -759,26 +759,40 @@ function ProjectCard({ project, icon, labels }) {
             </div>
           </div>
         )}
+
+        {/* Top-left Badge */}
+        <div
+          className="absolute top-2 left-2 px-1.5 py-[2px] text-[9.5px] font-bold uppercase tracking-wider select-none pointer-events-none"
+          style={{
+            zIndex: 30,
+            background: "#F5F1EF",
+            color: "#3D1106",
+            border: "1px solid #3D1106",
+            boxShadow: "1.5px 1.5px 0px 0px #3D1106",
+          }}
+        >
+          {project.badge || "PROJECT"}
+        </div>
       </div>
 
       {/* # Body */}
-      <div className="p-6 flex-1 flex flex-col justify-between">
+      <div className="p-4 flex-1 flex flex-col justify-between">
         <div>
           <div className="flex items-baseline justify-between mb-1">
-            <h3 className="text-xl md:text-2xl font-semibold tracking-tight" style={{ color: "#242120", fontFamily: "var(--font-serif)" }}>
+            <h3 className="text-base font-semibold tracking-tight" style={{ color: "#242120", fontFamily: "var(--font-serif)" }}>
               {project.title}
             </h3>
             <span className="font-mono text-label-sm" style={{ color: "#716966" }}>
               {project.year}
             </span>
           </div>
-          <p className="text-body-md mb-6 leading-normal" style={{ color: "#645d5a" }}>
+          <p className="text-body-sm mb-4 leading-normal" style={{ color: "#645d5a" }}>
             {project.description}
           </p>
 
           {/* # Tech stack tags */}
           <div
-            className="flex items-center gap-1.5 flex-wrap mb-6 py-2"
+            className="flex items-center gap-1 flex-wrap mb-4 py-1.5"
             style={{ borderTop: "1px solid rgba(61,17,6,0.15)", borderBottom: "1px solid rgba(61,17,6,0.15)" }}
           >
             {(Array.isArray(project.tags) ? project.tags : Object.values(project.tags).flat()).map((t) => (
@@ -789,7 +803,7 @@ function ProjectCard({ project, icon, labels }) {
 
         {/* # Contribution block */}
         <div
-          className="pt-4 p-3 mt-2"
+          className="pt-3 p-2.5 mt-1"
           style={{
             borderTop: "1.5px solid #3D1106",
             background: "rgba(245,241,239,0.4)",
@@ -798,7 +812,7 @@ function ProjectCard({ project, icon, labels }) {
           <span className="text-label-sm uppercase tracking-wider font-bold block mb-1" style={{ color: "#3D1106" }}>
             {labels.contributionTitle}
           </span>
-          <p className="text-body-sm leading-relaxed" style={{ color: "#645d5a" }}>
+          <p className="text-[12px] leading-relaxed" style={{ color: "#645d5a" }}>
             {project.contribution}
           </p>
 
@@ -1131,7 +1145,7 @@ export default function Home() {
           style={{ borderBottom: "1.5px solid #3D1106" }}
         >
           <SectionHeader index={t.projects.index} title={t.projects.title} subtitle={t.projects.subtitle} />
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {projectItems.map((p) => (
               <ProjectCard
                 key={p.id}
