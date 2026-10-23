@@ -1,43 +1,15 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import dynamic from "next/dynamic";
 import { GitHubCalendar } from "react-github-calendar";
+import { getProjectsByLang, PROJECT_ICONS } from "@/data/projects";
+import TechText from "@/components/TechText";
 
 const Lanyard = dynamic(() => import("@/components/Lanyard"), {
   ssr: false,
 });
-
-// # Project Icons
-const PROJECT_ICONS = {
-  maizeai: (
-    <svg className="w-10 h-10" fill="none" stroke="currentColor" strokeWidth="1" viewBox="0 0 24 24">
-      <rect height="18" rx="1" width="18" x="3" y="3" />
-      <circle cx="8.5" cy="8.5" r="1.5" />
-      <path d="M21 15l-5-5L5 21" />
-    </svg>
-  ),
-  "crop-care": (
-    <svg className="w-10 h-10" fill="none" stroke="currentColor" strokeWidth="1" viewBox="0 0 24 24">
-      <path d="M12 2a10 10 0 0 1 10 10c0 5.523-4.477 10-10 10S2 17.523 2 12A10 10 0 0 1 12 2z" />
-      <path d="M12 6v6l4 2" />
-    </svg>
-  ),
-  workgank: (
-    <svg className="w-10 h-10" fill="none" stroke="currentColor" strokeWidth="1" viewBox="0 0 24 24">
-      <path d="M4 18l5-6 4 3 7-9" />
-      <path d="M20 6h-5v5" />
-      <path d="M3 20h18" />
-    </svg>
-  ),
-  "dana-redesign": (
-    <svg className="w-10 h-10" fill="none" stroke="currentColor" strokeWidth="1" viewBox="0 0 24 24">
-      <rect x="3" y="5" width="18" height="14" rx="3" />
-      <path d="M7 9h10M7 15h6" />
-      <path d="M17 9l-2 6" />
-    </svg>
-  ),
-};
 
 // # Bilingual Content
 const CONTENT = {
@@ -53,9 +25,9 @@ const CONTENT = {
     hero: {
       titlePrefix: "Software Engineer",
       titleAmp: "&",
-      titleSuffix: "Systems Builder.",
+      titleSuffix: "Problem Solver.",
       subtext:
-        "Specializing in robust web applications, machine learning integration, and high-performance interfaces. Building software with architectural rigor, deterministic precision, and broadsheet typographic clarity.",
+        "Developing web applications with an interest in backend systems, machine learning, and cloud technologies. Focused on building practical solutions, integrating different technologies, and continuously improving through hands-on projects and real-world challenges.",
       downloadCv: "Download CV",
       github: "GitHub",
     },
@@ -63,8 +35,8 @@ const CONTENT = {
       index: "01",
       title: "ABOUT",
       subtitle: "Architectural Ledger",
-      p1: "I am a software engineer with foundational roots in full-stack architecture and applied machine learning integration. My engineering philosophy favors deterministic state machines, asynchronous event loops, and low-latency client-side execution over opaque abstractions.",
-      p2: "Whether engineering distributed ingest pipelines, deploying quantized neural networks via WebAssembly, or polishing user interfaces, I invest in clarity, maintainability, and end-to-end telemetry.",
+      p1: "I am a software developer with a background in Software Engineering and experience building full-stack web applications. I focus on connecting user interfaces, backend services, and API integrations to create practical and maintainable software solutions.",
+      p2: "My experience spans web development, machine learning integration, and cloud deployment. I value clean implementation, thoughtful technical decisions, and reliable applications that balance functionality, maintainability, and user needs."
     },
     projects: {
       index: "02",
@@ -74,78 +46,6 @@ const CONTENT = {
       contributionTitle: "My Contribution",
       githubBtn: "[ GitHub Repo ]",
       demoBtn: "[ Live Demo ]",
-      items: [
-        {
-          id: "maizeai",
-          title: "MaizeAI",
-          year: "2026",
-          image: "/assets/projects/maizeai.png",
-          description:
-            "Agricultural intelligence platform providing automated crop disease detection and yield analysis for precision farming initiatives.",
-          tags: {
-            Frontend: ["Next.js", "Tailwind CSS"],
-            Backend: ["FastAPI"],
-            "Machine Learning": ["ONNX Runtime"],
-          },
-          contribution:
-            "Architected client-side model inference pipeline and built the responsive analysis dashboard, optimizing latency by 40% and eliminating server-side image processing bottlenecks.",
-          github: "https://github.com/dimzkuy/MaizeAI",
-          demo: null,
-          placeholderText: "Agricultural Diagnosis UI • Neural Inference Console",
-        },
-        {
-          id: "crop-care",
-          title: "Crop-Care",
-          year: "2024",
-          image: "/assets/projects/cropcare.png",
-          description:
-            "Real-time plant leaf diagnosis tool delivering instant agronomic recommendations directly in the browser via localized neural nets.",
-          tags: {
-            Frontend: ["Next.js", "TypeScript"],
-            "Machine Learning": ["TensorFlow.js"],
-          },
-          contribution:
-            "Implemented client-side image processing and browser-based neural network evaluation for offline-capable diagnosis, cutting roundtrip payload times to zero for rural field scenarios.",
-          github: "https://github.com/RafliFahri/Crop-Care",
-          demo: null,
-          placeholderText: "Leaf Pathology Scanner • WebGL Quantized Classifier",
-        },
-        {
-          id: "workgank",
-          title: "Workgank Industry",
-          year: "2024",
-          image: "/assets/projects/Workgank.png",
-          description:
-            "Field monitoring and crop advisory dashboard designed to track plant-health signals, sensor conditions, and intervention priorities across farm operations.",
-          tags: {
-            Frontend: ["PHP", "JavaScript"],
-            Database: ["MySQL"],
-          },
-          contribution:
-            "Designed the operations dashboard, alerting logic, and real-time field telemetry workflows to help teams monitor crop health and prioritize interventions faster.",
-          github: null,
-          demo: null,
-          placeholderText: "Field Monitoring Dashboard • Sensor Health Overview",
-        },
-        {
-          id: "dana-redesign",
-          title: "DANA Redesign",
-          year: "2025",
-          image: "/assets/projects/dana-redesign.png",
-          description:
-            "Mobile finance experience redesign focused on a cleaner digital wallet flow, stronger transaction clarity, and a more persuasive account overview for everyday users.",
-          tags: {
-            Frontend: ["Flutter"],
-            UX: ["User Flow", "Mobile UX"],
-            Research: ["Wireframe", "Prototype"]
-          },
-          contribution:
-            "Restructured the transaction experience and payment journey into a more intuitive mobile-first layout, improving visual hierarchy and reducing friction in key user actions.",
-          github: "https://github.com/dimzkuy/repo-PPB-Team-4-Redesign-DANA",
-          demo: null,
-          placeholderText: "Fintech Mobile Flow • Wallet Redesign System",
-        },
-      ],
     },
     experience: {
       index: "04",
@@ -196,7 +96,7 @@ const CONTENT = {
         {
           id: "06",
           role: "Teaching Factory - ONT Refurbishment Intern",
-          org: "PT Industri Telekomunikasi Indonesia (Persero)/INTI, PT",
+          org: "PT. Industri Telekomunikasi Indonesia (Persero)/INTI",
           period: "SEP 2021 — FEB 2022",
           status: "Internship • Jakarta",
           desc: "Performed Optical Network Terminal (ONT) device refurbishment, hardware diagnostics, and quality inspection, building practical competencies in computer networking and telecommunications equipment.",
@@ -247,23 +147,23 @@ const CONTENT = {
       items: [
         {
           index: "01",
-          period: "SEP 2022 — AUG 2026",
-          degree: "Bachelor of Software Engineering",
-          institution: "Universitas Telkom",
-          label: "Core Specialization & Relevant Coursework:",
+          period: "2022 — 2026",
+          degree: "Software Engineering",
+          institution: "Telkom University",
+          label: "Relevant Coursework:",
           detail:
-            "Software Architecture, Database Systems (MySQL), Web Development, Operating Systems, Cloud Computing, Algorithms & Data Structures.",
-          footer: { left: "GPA // 3.80 OF 4.00", right: "HIGH DISTINCTION" },
+            "Web Development, Database Systems (MySQL), Operating Systems, Cloud Computing, Algorithms & Data Structures, and Software Architecture.",
+          footer: { left: "GPA // 3.80 OF 4.00", right: "BACHELOR'S DEGREE" },
         },
         {
           index: "02",
           period: "2019 — 2022",
           degree: "Computer and Network Engineering",
           institution: "SMK Telkom Jakarta",
-          label: "Specialization & Extracurricular Activities:",
+          label: "Field of Study & Activities:",
           detail:
-            "Computer Networking, Linux & Windows Server Administration, Hardware Troubleshooting, Network Infrastructure, and IT Club (Graphic Design).",
-          footer: { left: "FINAL SCORE // 86.87", right: "VERIFIED GRADUATE" },
+            "Computer Networking, Linux & Windows Operating System, Hardware Troubleshooting, Network Infrastructure, and Graphic Design.",
+          footer: { left: "FINAL SCORE // 86.87", right: "VOCATIONAL EDUCATION" },
         },
       ],
     },
@@ -277,7 +177,7 @@ const CONTENT = {
       channelHeader: "VERIFIED CHANNELS // DIRECT DISPATCH",
       response: "RESPONSE: <24H",
       channels: [
-        { label: "Email", value: "dcmargono@gmail.com", href: "mailto:dcmargono@gmail.com", icon: "arrow_forward" },
+        { label: "Email", value: "dcmargono@gmail.com", href: "mailto:dcmargono@gmail.com", icon: "north_east" },
         { label: "GitHub", value: "github.com/dimzkuy", href: "https://github.com/dimzkuy", icon: "north_east" },
         { label: "LinkedIn", value: "linkedin.com/in/dcmargono", href: "https://www.linkedin.com/in/dcmargono/", icon: "north_east" },
       ],
@@ -311,9 +211,9 @@ const CONTENT = {
     hero: {
       titlePrefix: "Software Engineer",
       titleAmp: "&",
-      titleSuffix: "Pembangun Sistem.",
+      titleSuffix: "Pengembang Solusi.",
       subtext:
-        "Spesialisasi dalam aplikasi web yang tangguh, integrasi machine learning, dan antarmuka berkinerja tinggi. Membangun perangkat lunak dengan ketelitian arsitektural, presisi deterministik, dan kejelasan tipografi editorial.",
+        "Mengembangkan aplikasi web dengan ketertarikan pada sistem backend, machine learning, dan teknologi cloud. Berfokus pada pembangunan solusi praktis, integrasi berbagai teknologi, serta pengembangan kemampuan melalui proyek langsung dan tantangan di dunia nyata.",
       downloadCv: "Unduh CV",
       github: "GitHub",
     },
@@ -321,8 +221,8 @@ const CONTENT = {
       index: "01",
       title: "TENTANG",
       subtitle: "Catatan Arsitektural",
-      p1: "Saya adalah seorang software engineer dengan fondasi kuat dalam arsitektur full-stack dan integrasi machine learning terapan. Filosofi rekayasa saya mengutamakan deterministic state machines, asynchronous event loops, dan eksekusi sisi klien berlatensi rendah daripada abstraksi yang tidak jelas.",
-      p2: "Baik merancang pipeline pengumpulan data terdistribusi, mengimplementasikan neural network terkuantisasi via WebAssembly, maupun menyempurnakan antarmuka pengguna, saya berfokus pada kejelasan, kemudahan pemeliharaan, serta telemetri end-to-end.",
+      p1: "Saya adalah seorang software developer dengan latar belakang Rekayasa Perangkat Lunak dan pengalaman dalam pengembangan aplikasi web full-stack. Saya berfokus pada pengintegrasian antarmuka pengguna, layanan backend, dan API untuk membangun solusi perangkat lunak yang fungsional dan mudah dipelihara.",
+      p2: "Pengalaman saya mencakup pengembangan web, integrasi machine learning, dan deployment aplikasi ke cloud. Saya mengutamakan implementasi yang terstruktur, pertimbangan teknis yang matang, serta aplikasi yang andal dengan memperhatikan fungsionalitas, kemudahan pemeliharaan, dan kebutuhan pengguna."
     },
     projects: {
       index: "02",
@@ -333,78 +233,6 @@ const CONTENT = {
       contributionTitle: "Kontribusi Saya",
       githubBtn: "[ Repositori GitHub ]",
       demoBtn: "[ Demo Langsung ]",
-      items: [
-        {
-          id: "maizeai",
-          title: "MaizeAI",
-          year: "2024",
-          image: "/assets/projects/maizeai.png",
-          description:
-            "Platform kecerdasan pertanian yang menyediakan deteksi penyakit tanaman otomatis dan analisis hasil panen untuk inisiatif pertanian presisi.",
-          tags: {
-            Frontend: ["Next.js", "Tailwind CSS"],
-            Backend: ["FastAPI"],
-            "Machine Learning": ["ONNX Runtime"],
-          },
-          contribution:
-            "Merancang pipeline inferensi model sisi klien dan membangun dasbor analisis responsif, mengoptimalkan latensi sebesar 40% serta menghilangkan bottleneck pemrosesan gambar di server.",
-          github: "https://github.com/dimzkuy",
-          demo: null,
-          placeholderText: "UI Diagnosis Pertanian • Konsol Inferensi Neural",
-        },
-        {
-          id: "crop-care",
-          title: "Crop-Care",
-          year: "2024",
-          description:
-            "Alat diagnosis daun tanaman waktu-nyata yang memberikan rekomendasi agronomi instan langsung di peramban melalui neural network lokal.",
-          tags: {
-            Frontend: ["Next.js", "TypeScript"],
-            "Machine Learning": ["TensorFlow.js"],
-          },
-          contribution:
-            "Mengimplementasikan pemrosesan gambar sisi klien dan evaluasi neural network berbasis browser untuk diagnosis offline, memangkas waktu payload bolak-balik menjadi nol untuk kondisi lapangan di pedesaan.",
-          github: "https://github.com/dimzkuy",
-          demo: null,
-          placeholderText: "Pemindai Patologi Daun • WebGL Quantized Classifier",
-        },
-        {
-          id: "workgank",
-          title: "Workgank Industry",
-          year: "2024",
-          image: "/assets/projects/Workgank.png",
-          description:
-            "Dashboard pemantauan lahan dan advisori tanaman yang dirancang untuk melacak sinyal kesehatan tanaman, kondisi sensor, serta prioritas intervensi di seluruh operasi pertanian.",
-          tags: {
-            Frontend: ["Next.js", "React"],
-            Backend: ["Node.js", "Supabase"],
-            "Data Ops": ["Realtime Metrics", "Alerts"],
-          },
-          contribution:
-            "Merancang dashboard operasional, logika peringatan, dan alur telemetri lapangan secara real-time agar tim bisa memantau kesehatan tanaman dan memprioritaskan intervensi lebih cepat.",
-          github: null,
-          demo: null,
-          placeholderText: "Dashboard Pemantauan Lahan • Gambaran Kesehatan Sensor",
-        },
-        {
-          id: "dana-redesign",
-          title: "DANA Redesign",
-          year: "2025",
-          image: "/assets/projects/dana-redesign.png",
-          description:
-            "Redesign pengalaman dompet digital berfokus pada alur transaksi yang lebih bersih, informasi saldo yang lebih jelas, dan overview akun yang lebih persuasif untuk pengguna sehari-hari.",
-          tags: {
-            Frontend: ["Next.js", "UI Design"],
-            UX: ["User Flow", "Mobile UX"],
-            Research: ["Wireframe", "Prototype"],
-          },
-          contribution:
-            "Menyusun ulang pengalaman transaksi dan alur pembayaran ke dalam layout mobile-first yang lebih intuitif, memperbaiki hierarki visual, dan mengurangi hambatan dalam langkah utama pengguna.",
-          github: null,
-          demo: null,
-          placeholderText: "Alur Mobile Fintech • Sistem Redesign Dompet",
-        },
-      ],
     },
     github: {
       index: "03",
@@ -827,19 +655,18 @@ function GitHubContributionGraph() {
             </div>
           </div>
 
-          <div className="overflow-x-auto pb-2">
-            <div className="min-w-full" style={{ color: "#242120" }}>
+          <div className="overflow-x-auto pb-2 github-calendar-container">
+            <div className="w-full" style={{ color: "#242120" }}>
               <GitHubCalendar
                 username={githubUsername}
                 year={selectedYear}
                 color="#3D1106"
-                blockSize={11}
+                blockSize={12}
                 blockMargin={4}
                 fontSize={10}
                 style={{
                   width: "100%",
                   maxWidth: "100%",
-                  minWidth: "100%",
                   fontFamily: "var(--font-sans)",
                 }}
                 blockRadius={2}
@@ -942,7 +769,9 @@ function ProjectCard({ project, icon, labels }) {
       <div className="p-6 flex-1 flex flex-col justify-between">
         <div>
           <div className="flex items-baseline justify-between mb-1">
-            <h3 className="text-headline-lg" style={{ color: "#242120" }}>{project.title}</h3>
+            <h3 className="text-xl md:text-2xl font-semibold tracking-tight" style={{ color: "#242120", fontFamily: "var(--font-serif)" }}>
+              {project.title}
+            </h3>
             <span className="font-mono text-label-sm" style={{ color: "#716966" }}>
               {project.year}
             </span>
@@ -953,16 +782,11 @@ function ProjectCard({ project, icon, labels }) {
 
           {/* # Tech stack tags */}
           <div
-            className="space-y-1 mb-6 py-2"
+            className="flex items-center gap-1.5 flex-wrap mb-6 py-2"
             style={{ borderTop: "1px solid rgba(61,17,6,0.15)", borderBottom: "1px solid rgba(61,17,6,0.15)" }}
           >
-            {Object.entries(project.tags).map(([cat, items]) => (
-              <div key={cat} className="flex items-center gap-1 flex-wrap">
-                <span className="text-[10px] font-bold uppercase w-28" style={{ color: "#716966" }}>
-                  {cat}:
-                </span>
-                {items.map((t) => <Tag key={t}>{t}</Tag>)}
-              </div>
+            {(Array.isArray(project.tags) ? project.tags : Object.values(project.tags).flat()).map((t) => (
+              <Tag key={t}>{t}</Tag>
             ))}
           </div>
         </div>
@@ -1042,6 +866,7 @@ export default function Home() {
   };
 
   const t = CONTENT[lang] || CONTENT.EN;
+  const projectItems = getProjectsByLang(lang, true);
 
   return (
     <>
@@ -1180,14 +1005,50 @@ export default function Home() {
             <div className="lg:col-span-7 flex flex-col items-start pt-2">
               {/* # Headline */}
               <h1
-                className="text-display mb-6 tracking-tight"
+                className="text-display mb-6 tracking-tight w-full max-w-2xl"
                 style={{ color: "#170200", lineHeight: 1.08 }}
               >
-                {t.hero.titlePrefix}{" "}
-                <span className="font-medium" style={{ color: "#170200" }}>
-                  {t.hero.titleAmp}
-                </span>{" "}
-                {t.hero.titleSuffix}
+                <span className="sr-only">
+                  {t.hero.titlePrefix} {t.hero.titleAmp} {t.hero.titleSuffix}
+                </span>
+                <span aria-hidden="true" className="block w-full">
+                  <span className="block w-full h-[52px] sm:h-[64px] md:h-[72px]">
+                    <TechText
+                      text={`${t.hero.titlePrefix} ${t.hero.titleAmp}`}
+                      fontWeight={700}
+                      fontSize={56}
+                      letterSpacing={-0.02}
+                      color="#170200"
+                      accentColor="#3D1106"
+                      align="left"
+                      reveal="letter"
+                      dashLength={4}
+                      dashGap={2}
+                      specks={15}
+                      intro="none"
+                      clickKick
+                      guides={false}
+                    />
+                  </span>
+                  <span className="block w-full h-[52px] sm:h-[64px] md:h-[72px] mt-1">
+                    <TechText
+                      text={t.hero.titleSuffix}
+                      fontWeight={700}
+                      fontSize={56}
+                      letterSpacing={-0.02}
+                      color="#170200"
+                      accentColor="#3D1106"
+                      align="left"
+                      reveal="letter"
+                      dashLength={4}
+                      dashGap={2}
+                      specks={15}
+                      intro="none"
+                      clickKick
+                      guides={false}
+                    />
+                  </span>
+                </span>
               </h1>
 
               {/* # Subtext */}
@@ -1289,7 +1150,7 @@ export default function Home() {
         >
           <SectionHeader index={t.projects.index} title={t.projects.title} subtitle={t.projects.subtitle} />
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-            {t.projects.items.map((p) => (
+            {projectItems.map((p) => (
               <ProjectCard
                 key={p.id}
                 project={p}
@@ -1303,6 +1164,25 @@ export default function Home() {
                 }}
               />
             ))}
+          </div>
+
+          {/* # More Projects Button */}
+          <div className="mt-12 flex justify-center">
+            <Link
+              href="/projects"
+              className="inline-flex items-center gap-2 px-10 py-4 text-label-lg uppercase tracking-wider font-bold transition-all hover:translate-x-[1px] hover:translate-y-[1px]"
+              style={{
+                background: "#3D1106",
+                color: "#fff",
+                border: "1.5px solid #3D1106",
+                boxShadow: "4px 4px 0px 0px rgba(61,17,6,0.35)",
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.boxShadow = "2px 2px 0px 0px rgba(61,17,6,0.35)")}
+              onMouseLeave={(e) => (e.currentTarget.style.boxShadow = "4px 4px 0px 0px rgba(61,17,6,0.35)")}
+            >
+              <span>{lang === "ID" ? "Lihat Semua Proyek" : "More Projects"}</span>
+              <span className="material-symbols-outlined" style={{ fontSize: 18 }}>north_east</span>
+            </Link>
           </div>
 
           <GitHubContributionGraph />

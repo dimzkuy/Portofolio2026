@@ -261,3 +261,23 @@ body {
     padding-inline: var(--spacing-margin-desktop);
   }
 }
+
+/* # GitHub Contribution Calendar Responsive Full-Width */
+.github-calendar-container {
+  width: 100%;
+}
+
+.github-calendar-container article,
+.github-calendar-container .react-activity-calendar,
+.github-calendar-container .react-activity-calendar__scroll-container {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+.github-calendar-container svg {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  min-width: 650px;
+  display: block;
+}
