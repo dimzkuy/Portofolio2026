@@ -30,7 +30,7 @@ export const PROJECTS = [
     image: "/assets/projects/cropcare.png",
     github: "https://github.com/RafliFahri/Crop-Care",
     demo: null,
-    tags: ["Next.js", "TensorFlow.js"],
+    tags: ["Next.js", "TensorFlow.js", "shadcn/ui"],
     description: {
       EN: "A plant disease diagnosis application designed to help users identify potential leaf diseases through a web-based interface.",
       ID: "Aplikasi diagnosis penyakit tanaman yang membantu pengguna mengidentifikasi kemungkinan penyakit daun melalui antarmuka web."

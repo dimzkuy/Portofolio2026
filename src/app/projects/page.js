@@ -236,7 +236,7 @@ export default function ProjectsPage() {
           {/* Top Back to Home Button */}
           <div className="mb-10">
             <Link
-              href="/"
+              href="/#projects"
               className="inline-flex items-center gap-2 px-6 py-3 text-label-sm uppercase tracking-wider font-bold transition-all hover:translate-x-[1px] hover:translate-y-[1px]"
               style={{
                 background: "#3D1106",

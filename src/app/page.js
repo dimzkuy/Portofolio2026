@@ -2,14 +2,10 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import dynamic from "next/dynamic";
 import { GitHubCalendar } from "react-github-calendar";
 import { getProjectsByLang, PROJECT_ICONS } from "@/data/projects";
 import TechText from "@/components/TechText";
-
-const Lanyard = dynamic(() => import("@/components/Lanyard"), {
-  ssr: false,
-});
+import ProfileFrame from "@/components/ProfileFrame";
 
 // # Bilingual Content
 const CONTENT = {
@@ -1108,23 +1104,9 @@ export default function Home() {
               </div>
             </div>
 
-            {/* # Right column: Interactive 3D Lanyard */}
-            <div className="lg:col-span-5 flex flex-col items-center justify-start lg:-mt-[84px]">
-              <div
-                className="w-full relative flex items-center justify-center"
-                style={{ width: "100%", height: "640px" }}
-              >
-                <Lanyard
-                  frontImage="/assets/img/profile.jpg"
-                  backImage="/assets/img/back.png"
-                  strapImage="/assets/img/band.png"
-                  finish="matte"
-                  size={0.52}
-                  strapLength={0.42}
-                  strapColor="#3d1106"
-                  elasticity={0.35}
-                />
-              </div>
+            {/* # Right column: Profile Neubrutalism Frame */}
+            <div className="lg:col-span-5 flex flex-col items-center justify-center lg:justify-start w-full max-w-[420px] mx-auto lg:max-w-none pt-4 lg:pt-2">
+              <ProfileFrame lang={lang} />
             </div>
           </div>
         </section>
