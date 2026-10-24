@@ -91,7 +91,7 @@ const CONTENT = {
         },
         {
           id: "06",
-          role: "Teaching Factory - ONT Refurbishment Intern",
+          role: "Teaching Factory - ONT Refurbishment",
           org: "PT. Industri Telekomunikasi Indonesia (Persero)/INTI",
           period: "SEP 2021 — FEB 2022",
           status: "Internship • Jakarta",
@@ -180,12 +180,13 @@ const CONTENT = {
       security: "SECURITY: PGP KEY 0x82A1",
       availability: "AVAILABILITY: OPEN",
     },
+
     footer: {
-      archiveTitle: "INDEX // ARCHIVE & PRACTICE",
+      archiveTitle: "INDEX // ENGINEERING",
       archiveDesc:
-        "A disciplined editorial portfolio balancing software engineering architecture with broadsheet typographic clarity.",
-      navTitle: "Navigation Ledger",
-      dispatchesTitle: "Verified Dispatches",
+        "Writing code, solving problems, and turning ideas into working software.",
+      navTitle: "Navigation",
+      dispatchesTitle: "Explore",
       navItems: [
         { href: "#about", label: "01 / About" },
         { href: "#projects", label: "02 / Projects" },
@@ -283,8 +284,8 @@ const CONTENT = {
         },
         {
           id: "06",
-          role: "Teaching Factory - Rekondisi ONT Magang",
-          org: "PT Industri Telekomunikasi Indonesia (Persero)/INTI, PT",
+          role: "Teaching Factory - Rekondisi ONT",
+          org: "PT Industri Telekomunikasi Indonesia (Persero)/INTI",
           period: "SEP 2021 — FEB 2022",
           status: "Magang • Jakarta",
           desc: "Melaksanakan rekondisi perangkat Optical Network Terminal (ONT), diagnostik perangkat keras, dan pengujian jaringan untuk memperkuat kompetensi jaringan komputer dan telekomunikasi.",
@@ -373,22 +374,20 @@ const CONTENT = {
       security: "SECURITY: PGP KEY 0x82A1",
       availability: "AVAILABILITY: OPEN",
     },
+
     footer: {
-      archiveTitle: "INDEKS // ARSIP & PRAKTIK",
+      archiveTitle: "INDEKS // REKAYASA",
       archiveDesc:
-        "Portofolio editorial berdisiplin tinggi yang menyeimbangkan arsitektur software engineering dengan kejelasan tipografi broadsheet.",
-      navTitle: "Daftar Navigasi",
-      dispatchesTitle: "Saluran Terverifikasi",
+        "Menulis kode, memecahkan masalah, dan mengubah ide menjadi perangkat lunak yang bisa digunakan.",
+      navTitle: "Navigasi",
+      dispatchesTitle: "Jelajahi",
       navItems: [
         { href: "#about", label: "01 / Tentang" },
         { href: "#projects", label: "02 / Proyek" },
-        { href: "#github", label: "03 / Aktivitas GitHub" },
-        { href: "#experience", label: "04 / Pengalaman" },
-        { href: "#skills", label: "05 / Keahlian" },
-        { href: "#education", label: "06 / Pendidikan" },
-        { href: "#contact", label: "07 / Kontak" },
+        { href: "#experience", label: "03 / Pengalaman" },
+        { href: "#contact", label: "04 / Kontak" },
       ],
-      copyright: "Hak cipta dilindungi undang-undang.",
+      copyright: "Hak cipta dilindungi.",
     },
   },
 };
@@ -542,7 +541,7 @@ function GitHubContributionGraph() {
             </h3>
           </div>
           <span className="text-headline-sm italic" style={{ color: "#716966" }}>
-            Commit &amp; Dispatch Ledger [2024–2025]
+            Commits
           </span>
         </div>
 
@@ -568,7 +567,7 @@ function GitHubContributionGraph() {
           </h3>
         </div>
         <span className="text-headline-sm italic" style={{ color: "#716966" }}>
-          Commit &amp; Dispatch Ledger [2024–2025]
+          Commits
         </span>
       </div>
 
