@@ -1,5 +1,6 @@
 import { Plus_Jakarta_Sans, Manrope } from "next/font/google";
 import "./globals.css";
+import "aos/dist/aos.css";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   variable: "--font-plus-jakarta-sans",

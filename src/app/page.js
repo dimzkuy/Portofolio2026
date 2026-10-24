@@ -3,6 +3,8 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { GitHubCalendar } from "react-github-calendar";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import { getProjectsByLang, PROJECT_ICONS } from "@/data/projects";
 import TechText from "@/components/TechText";
 import ProfileFrame from "@/components/ProfileFrame";
@@ -396,6 +398,7 @@ const CONTENT = {
 function SectionHeader({ index, title, subtitle }) {
   return (
     <div
+      data-aos="fade-up"
       style={{ borderBottom: "1.5px solid #3D1106" }}
       className="flex items-baseline justify-between pb-2 mb-16"
     >
@@ -483,6 +486,14 @@ function GitHubContributionGraph() {
 
   useEffect(() => {
     setIsMounted(true);
+    const timer = setTimeout(() => {
+      if (typeof window !== "undefined" && window.AOS) {
+        window.AOS.refresh();
+      } else {
+        AOS.refresh();
+      }
+    }, 100);
+    return () => clearTimeout(timer);
   }, []);
 
   useEffect(() => {
@@ -497,6 +508,7 @@ function GitHubContributionGraph() {
 
         const total = data.contributions.reduce((sum, item) => sum + (Number(item.count) || 0), 0);
         setTotalContributions(total);
+        setTimeout(() => AOS.refresh(), 100);
       })
       .catch(() => {
         if (!isCancelled) setTotalContributions(0);
@@ -513,6 +525,7 @@ function GitHubContributionGraph() {
         const streaks = calculateStreaks(data.contributions);
         setCurrentStreak(streaks.current);
         setLongestStreak(streaks.longest);
+        setTimeout(() => AOS.refresh(), 100);
       })
       .catch(() => {
         if (!isCancelled) {
@@ -715,9 +728,11 @@ function GitHubContributionGraph() {
 }
 
 // # Project Card Component
-function ProjectCard({ project, icon, labels }) {
+function ProjectCard({ project, icon, labels, aosDelay = 0 }) {
   return (
     <article
+      data-aos="fade-up"
+      data-aos-delay={aosDelay}
       className="flex flex-col bg-white transition-transform hover:-translate-y-1"
       style={{
         border: "1.5px solid #3D1106",
@@ -858,12 +873,22 @@ export default function Home() {
   const [currentYear, setCurrentYear] = useState("2025");
 
   useEffect(() => {
+    AOS.init({
+      duration: 800,
+      easing: "ease-out-cubic",
+      once: true,
+      offset: 20,
+    });
     setCurrentYear(new Date().getFullYear().toString());
     const saved = window.localStorage.getItem("preferred_lang");
     if (saved === "ID" || saved === "EN") {
       setLang(saved);
     }
   }, []);
+
+  useEffect(() => {
+    AOS.refresh();
+  }, [lang]);
 
   const handleSetLang = (l) => {
     setLang(l);
@@ -1011,7 +1036,7 @@ export default function Home() {
         >
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
             {/* # Left column */}
-            <div className="lg:col-span-7 flex flex-col items-start pt-2">
+            <div className="lg:col-span-7 flex flex-col items-start pt-2" data-aos="fade-up">
               {/* # Headline */}
               <h1
                 className="text-display mb-6 tracking-tight w-full max-w-2xl"
@@ -1118,7 +1143,7 @@ export default function Home() {
             </div>
 
             {/* # Right column: Profile Neubrutalism Frame */}
-            <div className="lg:col-span-5 flex flex-col items-center justify-center lg:justify-start w-full max-w-[420px] mx-auto lg:max-w-none pt-4 lg:pt-2">
+            <div className="lg:col-span-5 flex flex-col items-center justify-center lg:justify-start w-full max-w-[420px] mx-auto lg:max-w-none pt-4 lg:pt-2" data-aos="fade-up" data-aos-delay="150">
               <ProfileFrame lang={lang} />
             </div>
           </div>
@@ -1132,8 +1157,8 @@ export default function Home() {
         >
           <SectionHeader index={t.about.index} title={t.about.title} subtitle={t.about.subtitle} />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 text-body-lg leading-relaxed" style={{ color: "#645d5a" }}>
-            <p>{t.about.p1}</p>
-            <p>{t.about.p2}</p>
+            <p data-aos="fade-up" data-aos-delay="100">{t.about.p1}</p>
+            <p data-aos="fade-up" data-aos-delay="200">{t.about.p2}</p>
           </div>
         </section>
 
@@ -1145,11 +1170,12 @@ export default function Home() {
         >
           <SectionHeader index={t.projects.index} title={t.projects.title} subtitle={t.projects.subtitle} />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {projectItems.map((p) => (
+            {projectItems.map((p, idx) => (
               <ProjectCard
                 key={p.id}
                 project={p}
                 icon={PROJECT_ICONS[p.id]}
+                aosDelay={idx * 100}
                 labels={{
                   placeholder: t.projects.placeholder,
                   deployed: t.projects.deployed,
@@ -1162,7 +1188,7 @@ export default function Home() {
           </div>
 
           {/* # More Projects Button */}
-          <div className="mt-12 flex justify-center">
+          <div className="mt-12 flex justify-center" data-aos="fade-up">
             <Link
               href="/projects"
               className="inline-flex items-center gap-2 px-10 py-4 text-label-lg uppercase tracking-wider font-bold transition-all hover:translate-x-[1px] hover:translate-y-[1px]"
@@ -1180,7 +1206,9 @@ export default function Home() {
             </Link>
           </div>
 
-          <GitHubContributionGraph />
+          <div data-aos="fade-up">
+            <GitHubContributionGraph />
+          </div>
         </section>
 
         {/* # Experience */}
@@ -1191,6 +1219,7 @@ export default function Home() {
         >
           <SectionHeader index={t.experience.index} title={t.experience.title} subtitle={t.experience.subtitle} />
           <div
+            data-aos="fade-up"
             className="bg-white"
             style={{ border: "1.5px solid #3D1106", boxShadow: "4px 4px 0px 0px #3D1106" }}
           >
@@ -1232,9 +1261,11 @@ export default function Home() {
         >
           <SectionHeader index={t.skills.index} title={t.skills.title} subtitle={t.skills.subtitle} />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {t.skills.items.map((s) => (
+            {t.skills.items.map((s, idx) => (
               <div
                 key={s.index}
+                data-aos="fade-up"
+                data-aos-delay={idx * 100}
                 className="bg-white p-6 flex flex-col justify-between"
                 style={{ border: "1.5px solid #3D1106", boxShadow: "3px 3px 0px 0px #3D1106" }}
               >
@@ -1281,9 +1312,11 @@ export default function Home() {
         >
           <SectionHeader index={t.education.index} title={t.education.title} subtitle={t.education.subtitle} />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {t.education.items.map((e) => (
+            {t.education.items.map((e, idx) => (
               <div
                 key={e.index}
+                data-aos="fade-up"
+                data-aos-delay={idx * 150}
                 className="bg-white p-10 flex flex-col justify-between"
                 style={{ border: "1.5px solid #3D1106", boxShadow: "4px 4px 0px 0px #3D1106" }}
               >
@@ -1324,6 +1357,7 @@ export default function Home() {
         >
           <SectionHeader index={t.contact.index} title={t.contact.title} subtitle={t.contact.subtitle} />
           <div
+            data-aos="fade-up"
             className="p-10 md:p-16 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center"
             style={{
               background: "#F5F1EF",
@@ -1426,7 +1460,7 @@ export default function Home() {
       </main>
 
       {/* # Footer */}
-      <footer className="w-full bg-white" style={{ borderTop: "1.5px solid #3D1106", marginTop: "6rem" }}>
+      <footer data-aos="fade-up" className="w-full bg-white" style={{ borderTop: "1.5px solid #3D1106", marginTop: "6rem" }}>
         <div className="max-w-[76rem] mx-auto px-5 md:px-16 py-16">
           <div
             className="flex flex-col md:flex-row justify-between items-start gap-10 pb-10"
