@@ -1067,12 +1067,12 @@ export default function Home() {
               </p>
 
               {/* # CTAs */}
-              <div className="flex flex-wrap items-center gap-4">
+              <div className="flex items-center gap-3 sm:gap-4">
                 <a
                   href="https://drive.google.com/file/d/1_F3S1_g6wIXd8agTGiNBtAq7PJPLUjCS/view?usp=sharing"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-10 py-4 text-label-lg uppercase tracking-wider transition-all hover:translate-x-[1px] hover:translate-y-[1px]"
+                  className="inline-flex items-center justify-center gap-2 px-5 py-3.5 sm:px-10 sm:py-4 text-sm sm:text-label-lg uppercase tracking-wider whitespace-nowrap transition-all hover:translate-x-[1px] hover:translate-y-[1px]"
                   style={{
                     background: "#3D1106",
                     color: "#fff",
@@ -1083,14 +1083,14 @@ export default function Home() {
                   onMouseLeave={(e) => (e.currentTarget.style.boxShadow = "3px 3px 0px 0px #3D1106")}
                 >
                   <span>{t.hero.downloadCv}</span>
-                  <span className="material-symbols-outlined" style={{ fontSize: 18 }}>arrow_downward</span>
+                  <span className="material-symbols-outlined shrink-0" style={{ fontSize: 18 }}>arrow_downward</span>
                 </a>
 
                 <a
                   href="https://github.com/dimzkuy"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-10 py-4 text-label-lg uppercase tracking-wider transition-all hover:translate-x-[1px] hover:translate-y-[1px]"
+                  className="inline-flex items-center justify-center gap-2 px-5 py-3.5 sm:px-10 sm:py-4 text-sm sm:text-label-lg uppercase tracking-wider whitespace-nowrap transition-all hover:translate-x-[1px] hover:translate-y-[1px]"
                   style={{
                     background: "#fff",
                     color: "#242120",
@@ -1106,7 +1106,7 @@ export default function Home() {
                     e.currentTarget.style.boxShadow = "3px 3px 0px 0px #3D1106";
                   }}
                 >
-                  <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                  <svg className="w-4 h-4 fill-current shrink-0" viewBox="0 0 24 24" aria-hidden="true">
                     <path
                       fillRule="evenodd"
                       clipRule="evenodd"
