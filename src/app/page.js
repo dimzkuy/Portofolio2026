@@ -32,14 +32,12 @@ const CONTENT = {
     about: {
       index: "01",
       title: "ABOUT",
-      subtitle: "Architectural Ledger",
       p1: "I am a software developer with a background in Software Engineering and experience building full-stack web applications. I focus on connecting user interfaces, backend services, and API integrations to create practical and maintainable software solutions.",
       p2: "My experience spans web development, machine learning integration, and cloud deployment. I value clean implementation, thoughtful technical decisions, and reliable applications that balance functionality, maintainability, and user needs."
     },
     projects: {
       index: "02",
       title: "FEATURED PROJECTS",
-      subtitle: "Personal & College Projects",
       placeholder: "[ SCREENSHOT PLACEHOLDER ]",
       contributionTitle: "My Contribution",
       githubBtn: "[ GitHub Repo ]",
@@ -48,7 +46,6 @@ const CONTENT = {
     experience: {
       index: "04",
       title: "EXPERIENCE",
-      subtitle: "Chronological Record",
       rolePrefix: "ROLE",
       items: [
         {
@@ -104,7 +101,6 @@ const CONTENT = {
     skills: {
       index: "05",
       title: "TECHNICAL SKILLS",
-      subtitle: "Competency Matrix",
       setPrefix: "SET",
       items: [
         {
@@ -140,7 +136,6 @@ const CONTENT = {
     education: {
       index: "06",
       title: "EDUCATION",
-      subtitle: "Academic Credentials",
       prefix: "ACADEMIC",
       items: [
         {
@@ -168,7 +163,6 @@ const CONTENT = {
     contact: {
       index: "07",
       title: "CONTACT",
-      subtitle: "Direct Telemetry",
       heading: "Let's Talk!",
       subtext:
         "Open to new opportunities, collaborations, and conversations about software engineering, cloud technologies, and innovative ideas.",
@@ -219,14 +213,12 @@ const CONTENT = {
     about: {
       index: "01",
       title: "TENTANG",
-      subtitle: "Catatan Arsitektural",
       p1: "Saya adalah seorang software developer dengan latar belakang Rekayasa Perangkat Lunak dan pengalaman dalam pengembangan aplikasi web full-stack. Saya berfokus pada pengintegrasian antarmuka pengguna, layanan backend, dan API untuk membangun solusi perangkat lunak yang fungsional dan mudah dipelihara.",
       p2: "Pengalaman saya mencakup pengembangan web, integrasi machine learning, dan deployment aplikasi ke cloud. Saya mengutamakan implementasi yang terstruktur, pertimbangan teknis yang matang, serta aplikasi yang andal dengan memperhatikan fungsionalitas, kemudahan pemeliharaan, dan kebutuhan pengguna."
     },
     projects: {
       index: "02",
       title: "PROYEK PILIHAN",
-      subtitle: "Katalog Pilihan [2024–2025]",
       placeholder: "[ TANGKAPAN LAYAR ]",
       deployed: "DILUNCURKAN",
       contributionTitle: "Kontribusi Saya",
@@ -241,7 +233,6 @@ const CONTENT = {
     experience: {
       index: "04",
       title: "PENGALAMAN",
-      subtitle: "Rekam Jejak Kronologis",
       rolePrefix: "PERAN",
       items: [
         {
@@ -297,7 +288,6 @@ const CONTENT = {
     skills: {
       index: "05",
       title: "KEAHLIAN TEKNIS",
-      subtitle: "Matriks Kompetensi",
       setPrefix: "KUMPULAN",
       items: [
         {
@@ -333,12 +323,11 @@ const CONTENT = {
     education: {
       index: "06",
       title: "PENDIDIKAN",
-      subtitle: "Kredensial Akademik",
       prefix: "AKADEMIK",
       items: [
         {
           index: "01",
-          period: "SEP 2022 — AGT 2026",
+          period: "2022 — 2026",
           degree: "Sarjana Rekayasa Perangkat Lunak",
           institution: "Universitas Telkom",
           label: "Spesialisasi Inti & Mata Kuliah Relevan:",
@@ -361,7 +350,6 @@ const CONTENT = {
     contact: {
       index: "07",
       title: "KONTAK",
-      subtitle: "Telemetri Langsung",
       heading: "Mari Berbicara!",
       subtext:
         "Terbuka untuk peluang baru, kolaborasi, dan diskusi tentang rekayasa perangkat lunak, teknologi cloud, serta ide inovatif.",
@@ -579,9 +567,6 @@ function GitHubContributionGraph() {
             03 / Open Source Activity
           </h3>
         </div>
-        <span className="text-headline-sm italic" style={{ color: "#716966" }}>
-          Commits
-        </span>
       </div>
 
       <div style={panelStyle}>
@@ -611,7 +596,6 @@ function GitHubContributionGraph() {
             </a>
           </div>
         </div>
-
         <div className="px-4 py-3 md:px-6 md:py-4">
           <div className="mb-2 flex items-center justify-between gap-6">
             <div className="flex-1">
@@ -1460,7 +1444,7 @@ export default function Home() {
       </main>
 
       {/* # Footer */}
-      <footer data-aos="fade-up" className="w-full bg-white" style={{ borderTop: "1.5px solid #3D1106", marginTop: "6rem" }}>
+      <footer className="w-full bg-white" style={{ borderTop: "1.5px solid #3D1106", marginTop: "6rem" }}>
         <div className="max-w-[76rem] mx-auto px-5 md:px-16 py-16">
           <div
             className="flex flex-col md:flex-row justify-between items-start gap-10 pb-10"
