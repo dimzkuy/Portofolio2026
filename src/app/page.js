@@ -353,7 +353,7 @@ const CONTENT = {
       cta: "Hubungi Saya",
       channelHeader: "CONTACT CHANNELS",
       channels: [
-        { label: "Email", value: "dcmargono@gmail.com", href: "mailto:dcmargono@gmail.com", icon: "arrow_forward" },
+        { label: "Email", value: "dcmargono@gmail.com", href: "mailto:dcmargono@gmail.com", icon: "north_east" },
         { label: "GitHub", value: "github.com/dimzkuy", href: "https://github.com/dimzkuy", icon: "north_east" },
         { label: "LinkedIn", value: "linkedin.com/in/dcmargono", href: "https://www.linkedin.com/in/dcmargono/", icon: "north_east" },
       ],
