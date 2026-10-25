@@ -201,7 +201,7 @@ const CONTENT = {
     hero: {
       titlePrefix: "Software Engineer",
       titleAmp: "&",
-      titleSuffix: "Pengembang Solusi.",
+      titleSuffix: "Pemecah Masalah.",
       subtext:
         "Mengembangkan aplikasi web dengan ketertarikan pada sistem backend, machine learning, dan teknologi cloud. Berfokus pada pembangunan solusi praktis, integrasi berbagai teknologi, serta pengembangan kemampuan melalui proyek langsung dan tantangan di dunia nyata.",
       downloadCv: "Unduh CV",
