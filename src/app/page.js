@@ -899,7 +899,7 @@ export default function Home() {
             style={{ color: "#242120" }}
           >
             <span className="w-2 h-2 inline-block" style={{ background: "#3D1106" }} />
-            <span>dimskuy</span>
+            <span>dimzkuy</span>
           </a>
 
           {/* # Desktop nav & Language Switcher */}
