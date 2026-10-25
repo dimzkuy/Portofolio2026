@@ -9,7 +9,6 @@ const LABELS = {
   EN: {
     headerIndex: "01",
     headerTitle: "ALL PROJECTS",
-    headerSubtitle: "Personal & College Projects",
     backBtn: "Home",
     placeholder: "[ SCREENSHOT PLACEHOLDER ]",
     contributionTitle: "My Contribution",
@@ -19,7 +18,6 @@ const LABELS = {
   ID: {
     headerIndex: "01",
     headerTitle: "SEMUA PROYEK",
-    headerSubtitle: "Katalog Proyek Pribadi & Perkuliahan",
     backBtn: "Kembali ke Beranda",
     placeholder: "[ TANGKAPAN LAYAR ]",
     contributionTitle: "Kontribusi Saya",
