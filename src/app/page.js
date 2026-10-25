@@ -849,7 +849,7 @@ function ProjectCard({ project, icon, labels, aosDelay = 0 }) {
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [lang, setLang] = useState("EN");
-  const [currentYear, setCurrentYear] = useState("2025");
+  const [currentYear, setCurrentYear] = useState("2026");
 
   useEffect(() => {
     AOS.init({
