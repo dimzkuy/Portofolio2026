@@ -77,7 +77,7 @@ const CONTENT = {
           role: "Cloud Computing Cohort",
           org: "Bangkit Academy led by Google, Tokopedia, Gojek, & Traveloka",
           period: "SEP 2024 — DEC 2024",
-          status: "Full Graduate • 906 Hours",
+          status: "MSIB • Full Graduate",
           desc: "Completed 906 hours of intensive training covering Google Cloud Platform (GCP), Cloud Run, DevOps/SRE, scalable backend development, and Applied Machine Learning. Successfully built and deployed the Crop-Care Capstone Project.",
         },
         {
@@ -261,7 +261,7 @@ const CONTENT = {
           role: "Cloud Computing Cohort",
           org: "Bangkit Academy led by Google, Tokopedia, Gojek, & Traveloka",
           period: "SEP 2024 — DES 2024",
-          status: "Lulus Penuh • 906 Jam",
+          status: "MSIB • Lulus Penuh",
           desc: "Menyelesaikan 906 jam pelatihan intensif Google Cloud Platform (GCP), Cloud Run, DevOps/SRE, backend development, dan Machine Learning Terapan. Berhasil menyelesaikan dan menerapkan Capstone Project 'Crop-Care'.",
         },
         {
@@ -330,7 +330,7 @@ const CONTENT = {
           label: "Spesialisasi Inti & Mata Kuliah Relevan:",
           detail:
             "Arsitektur Rekayasa Perangkat Lunak, Sistem Manajemen Basis Data (MySQL), Pemrograman Web, Sistem Operasi, Cloud Computing, Algoritma & Struktur Data.",
-          footer: { left: "IPK // 3.80 DARI 4.00", right: "PREDIKAT PUJIAN" },
+          footer: { left: "IPK // 3.80 DARI 4.00", right: "GELAR SARJANA" },
         },
         {
           index: "02",
@@ -340,7 +340,7 @@ const CONTENT = {
           label: "Spesialisasi & Kegiatan Ekstrakurikuler:",
           detail:
             "Jaringan Komputer, Administrasi Server Linux & Windows, Troubleshooting Perangkat Keras, Infrastruktur Jaringan, serta IT Club (Desain Grafis).",
-          footer: { left: "NILAI AKHIR // 86.87", right: "LULUSAN TERVERIFIKASI" },
+          footer: { left: "NILAI AKHIR // 86.87", right: "PENDIDIKAN VOKASI" },
         },
       ],
     },
@@ -417,7 +417,8 @@ function Tag({ children }) {
 }
 
 // # GitHub Contribution Graph Component
-function GitHubContributionGraph() {
+function GitHubContributionGraph({ lang = "EN" }) {
+  const isId = lang === "ID";
   const githubUsername = "dimzkuy";
   const [isMounted, setIsMounted] = useState(false);
   const [selectedYear, setSelectedYear] = useState(2026);
@@ -532,11 +533,11 @@ function GitHubContributionGraph() {
           <div className="flex items-center gap-2">
             <span className="w-3 h-3 inline-block" style={{ background: "#3D1106" }} />
             <h3 className="text-label-lg uppercase tracking-wider font-bold" style={{ color: "#242120" }}>
-              03 / Open Source Activity
+              {isId ? "03 / Aktivitas Open Source" : "03 / Open Source Activity"}
             </h3>
           </div>
           <span className="text-headline-sm italic" style={{ color: "#716966" }}>
-            Commits
+            {isId ? "Catatan Kontribusi" : "Commits"}
           </span>
         </div>
 
@@ -558,7 +559,7 @@ function GitHubContributionGraph() {
         <div className="flex items-center gap-2">
           <span className="w-3 h-3 inline-block" style={{ background: "#3D1106" }} />
           <h3 className="text-label-lg uppercase tracking-wider font-bold" style={{ color: "#242120" }}>
-            03 / Open Source Activity
+            {isId ? "03 / Aktivitas Open Source" : "03 / Open Source Activity"}
           </h3>
         </div>
       </div>
@@ -567,16 +568,16 @@ function GitHubContributionGraph() {
         <div className="flex items-center justify-between gap-4 px-4 py-3 md:px-5" style={{ borderBottom: "1.5px solid #3D1106" }}>
           <div className="flex items-center gap-2">
             <span className="text-label-sm uppercase tracking-wider font-bold" style={{ color: "#3D1106" }}>
-              TELEMETRY // GITHUB REPOSITORIES
+              {isId ? "TELEMETRI // REPOSITORI GITHUB" : "TELEMETRY // GITHUB REPOSITORIES"}
             </span>
           </div>
 
           <div className="flex items-center gap-3 flex-wrap justify-end">
             <span className="inline-flex items-center gap-2 px-3 py-1 text-label-sm uppercase" style={{ background: "#F6F0EE", border: "1px solid #3D1106", color: "#242120" }}>
-              CURRENT STREAK: <strong style={{ fontWeight: 700 }}>{currentStreak} {currentStreak === 1 ? "day" : "days"}</strong>
+              {isId ? "STREAK SAAT INI:" : "CURRENT STREAK:"} <strong style={{ fontWeight: 700 }}>{currentStreak} {isId ? "hari" : currentStreak === 1 ? "day" : "days"}</strong>
             </span>
             <span className="inline-flex items-center gap-2 px-3 py-1 text-label-sm uppercase" style={{ background: "#F6F0EE", border: "1px solid #3D1106", color: "#242120" }}>
-              LONGEST STREAK: <strong style={{ fontWeight: 700 }}>{longestStreak} {longestStreak === 1 ? "day" : "days"}</strong>
+              {isId ? "STREAK TERPANJANG:" : "LONGEST STREAK:"} <strong style={{ fontWeight: 700 }}>{longestStreak} {isId ? "hari" : longestStreak === 1 ? "day" : "days"}</strong>
             </span>
             <a
               href={`https://github.com/${githubUsername}`}
@@ -595,17 +596,17 @@ function GitHubContributionGraph() {
             <div className="flex-1">
               <div className="flex items-end gap-2">
                 <span className="text-display-mobile leading-none font-bold" style={{ color: "#242120" }}>
-                  GitHub Activity
+                  {isId ? "Aktivitas GitHub" : "GitHub Activity"}
                 </span>
               </div>
               <div className="mt-2 text-[13px] uppercase tracking-[0.08em]" style={{ color: "#3D1106" }}>
-                <span>{allTimeContributions.toLocaleString()} total contributions</span>
+                <span>{allTimeContributions.toLocaleString(isId ? "id-ID" : "en-US")} {isId ? "total kontribusi" : "total contributions"}</span>
               </div>
             </div>
 
             <div className="flex items-center gap-2">
               <label className="text-label-sm uppercase tracking-wider font-bold" style={{ color: "#3D1106" }} htmlFor="github-year-select">
-                Year
+                {isId ? "Tahun" : "Year"}
               </label>
               <div style={{ position: "relative" }}>
                 <select
@@ -659,8 +660,8 @@ function GitHubContributionGraph() {
                 showColorLegend={false}
                 showTotalCount={false}
                 labels={{
-                  totalCount: "{{count}} contributions in {{year}}",
-                  legend: { less: "Less", more: "More" },
+                  totalCount: isId ? "{{count}} kontribusi pada {{year}}" : "{{count}} contributions in {{year}}",
+                  legend: { less: isId ? "Sedikit" : "Less", more: isId ? "Banyak" : "More" },
                 }}
                 theme={{
                   light: ["#ebe1da", "#d7c1ae", "#c48d65", "#8a4b3d", "#3d1106"],
@@ -672,11 +673,11 @@ function GitHubContributionGraph() {
 
           <div className="mt-4 pt-3 flex items-center justify-between gap-3" style={{ borderTop: "1.5px solid #3D1106" }}>
             <div className="text-[10px] uppercase" style={{ color: "#716966" }}>
-              <span>{totalContributions} contributions in {selectedYear}</span>
+              <span>{totalContributions} {isId ? `kontribusi pada ${selectedYear}` : `contributions in ${selectedYear}`}</span>
             </div>
 
             <div className="flex items-center gap-2 text-[10px] uppercase" style={{ color: "#716966" }}>
-              <span>Less</span>
+              <span>{isId ? "Sedikit" : "Less"}</span>
               {[
                 "#f3efe9",
                 "#e0cbbd",
@@ -696,7 +697,7 @@ function GitHubContributionGraph() {
                   }}
                 />
               ))}
-              <span>More</span>
+              <span>{isId ? "Banyak" : "More"}</span>
             </div>
           </div>
         </div>
@@ -1185,7 +1186,7 @@ export default function Home() {
           </div>
 
           <div data-aos="fade-up">
-            <GitHubContributionGraph />
+            <GitHubContributionGraph lang={lang} />
           </div>
         </section>
 
