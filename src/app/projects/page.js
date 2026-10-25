@@ -18,7 +18,7 @@ const LABELS = {
   ID: {
     headerIndex: "01",
     headerTitle: "SEMUA PROYEK",
-    backBtn: "Kembali ke Beranda",
+    backBtn: "Beranda",
     placeholder: "[ TANGKAPAN LAYAR ]",
     contributionTitle: "Kontribusi Saya",
     githubBtn: "[ Repositori GitHub ]",

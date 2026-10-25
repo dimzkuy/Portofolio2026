@@ -163,7 +163,7 @@ const CONTENT = {
     contact: {
       index: "07",
       title: "CONTACT",
-      heading: "Let's Talk!",
+      heading: "Let's Connect!",
       subtext:
         "Open to new opportunities, collaborations, and conversations about software engineering, cloud technologies, and innovative ideas.",
       channelHeader: "CONTACT CHANNELS",
@@ -347,7 +347,7 @@ const CONTENT = {
     contact: {
       index: "07",
       title: "KONTAK",
-      heading: "Mari Berbicara!",
+      heading: "Mari Terhubung!",
       subtext:
         "Terbuka untuk peluang baru, kolaborasi, dan diskusi tentang rekayasa perangkat lunak, teknologi cloud, serta ide inovatif.",
       cta: "Hubungi Saya",
@@ -1180,7 +1180,7 @@ export default function Home() {
               onMouseEnter={(e) => (e.currentTarget.style.boxShadow = "2px 2px 0px 0px rgba(61,17,6,0.35)")}
               onMouseLeave={(e) => (e.currentTarget.style.boxShadow = "4px 4px 0px 0px rgba(61,17,6,0.35)")}
             >
-              <span>{lang === "ID" ? "Lihat Semua Proyek" : "More Projects"}</span>
+              <span>{lang === "ID" ? "Proyek Lainnya" : "More Projects"}</span>
               <span className="material-symbols-outlined" style={{ fontSize: 18 }}>north_east</span>
             </Link>
           </div>
