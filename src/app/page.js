@@ -113,14 +113,21 @@ const CONTENT = {
       items: [
         {
           index: "01",
-          mono: "LANGUAGES · FRAMEWORKS",
-          title: "Frontend & Backend",
+          mono: "LANGUAGES · SYNTAX",
+          title: "Programming Languages",
           tags: [
-            { label: "JavaScript", icon: "siJavascript" },
-            { label: "Python", icon: "siPython" },
-            { label: "PHP", icon: "siPhp" },
             { label: "HTML", icon: "siHtml5" },
             { label: "CSS", icon: "siCss" },
+            { label: "JavaScript", icon: "siJavascript" },
+            { label: "PHP", icon: "siPhp" },
+            { label: "Python", icon: "siPython" },
+          ],
+        },
+        {
+          index: "02",
+          mono: "FRAMEWORKS · LIBRARIES",
+          title: "Frontend & Backend",
+          tags: [
             { label: "React", icon: "siReact" },
             { label: "Next.js", icon: "siNextdotjs" },
             { label: "Tailwind CSS", icon: "siTailwindcss" },
@@ -128,7 +135,7 @@ const CONTENT = {
           ],
         },
         {
-          index: "02",
+          index: "03",
           mono: "CLOUD · PLATFORMS",
           title: "Cloud Platforms",
           tags: [
@@ -138,7 +145,7 @@ const CONTENT = {
           ],
         },
         {
-          index: "03",
+          index: "04",
           mono: "DATABASE · SERVICES",
           title: "Databases & Backend Services",
           tags: [
@@ -147,7 +154,7 @@ const CONTENT = {
           ],
         },
         {
-          index: "04",
+          index: "05",
           mono: "ML · INFERENCE",
           title: "Machine Learning & Computer Vision",
           tags: [
@@ -157,7 +164,7 @@ const CONTENT = {
           ],
         },
         {
-          index: "05",
+          index: "06",
           mono: "TOOLS · WORKFLOW",
           title: "Development Tools",
           tags: [
@@ -329,14 +336,21 @@ const CONTENT = {
       items: [
         {
           index: "01",
-          mono: "BAHASA · FRAMEWORK",
-          title: "Frontend & Backend",
+          mono: "BAHASA · SINTAKS",
+          title: "Bahasa Pemrograman",
           tags: [
-            { label: "JavaScript", icon: "siJavascript" },
-            { label: "Python", icon: "siPython" },
-            { label: "PHP", icon: "siPhp" },
             { label: "HTML", icon: "siHtml5" },
             { label: "CSS", icon: "siCss" },
+            { label: "JavaScript", icon: "siJavascript" },
+            { label: "PHP", icon: "siPhp" },
+            { label: "Python", icon: "siPython" },
+          ],
+        },
+        {
+          index: "02",
+          mono: "FRAMEWORK · PUSTAKA",
+          title: "Frontend & Backend",
+          tags: [
             { label: "React", icon: "siReact" },
             { label: "Next.js", icon: "siNextdotjs" },
             { label: "Tailwind CSS", icon: "siTailwindcss" },
@@ -344,8 +358,8 @@ const CONTENT = {
           ],
         },
         {
-          index: "02",
-          mono: "CLOUD · PLATFORM",
+          index: "03",
+          mono: "PLATFORM · CLOUD",
           title: "Platform Cloud",
           tags: [
             { label: "Google Cloud Run", icon: "siGooglecloud" },
@@ -356,7 +370,7 @@ const CONTENT = {
           ],
         },
         {
-          index: "03",
+          index: "04",
           mono: "DATABASE · LAYANAN",
           title: "Database & Layanan Backend",
           tags: [
@@ -365,7 +379,7 @@ const CONTENT = {
           ],
         },
         {
-          index: "04",
+          index: "05",
           mono: "ML · INFERENSI",
           title: "Machine Learning & Computer Vision",
           tags: [
@@ -375,7 +389,7 @@ const CONTENT = {
           ],
         },
         {
-          index: "05",
+          index: "06",
           mono: "TOOLS · WORKFLOW",
           title: "Development Tools",
           tags: [
@@ -388,7 +402,6 @@ const CONTENT = {
             { label: "VirtualBox", icon: "siVirtualbox" },
             { label: "Figma", icon: "siFigma" },
             { label: "VS Code", icon: "siVisualstudiocode" },
-
           ],
         },
       ],
@@ -1435,7 +1448,7 @@ export default function Home() {
                 <div>
                   <div className="flex items-start justify-between gap-3 mb-2">
                     <span className="text-label-sm uppercase tracking-wider font-bold shrink-0 whitespace-nowrap" style={{ color: "#3D1106" }}>
-                      {t.education.prefix} // {e.index}
+                      {`${t.education.prefix} // ${e.index}`}
                     </span>
                     <span className="font-mono text-label-sm shrink-0 whitespace-nowrap text-right" style={{ color: "#716966" }}>{e.period}</span>
                   </div>
