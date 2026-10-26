@@ -14,7 +14,7 @@ import {
   siGooglecloud, siFirebase, siVercel,
   siSupabase, siMysql,
   siTensorflow, siKeras, siOnnx,
-  siGit, siGithub, siGithubactions, siPostman, siLinux, siVirtualbox, siFigma,
+  siGit, siGithub, siGithubactions, siPostman, siLinux, siVirtualbox, siFigma, siDocker,
 } from "simple-icons";
 
 // # Bilingual Content
@@ -163,6 +163,7 @@ const CONTENT = {
             { label: "Git", icon: "siGit" },
             { label: "GitHub", icon: "siGithub" },
             { label: "GitHub Actions", icon: "siGithubactions" },
+            { label: "Docker", icon: "siDocker" },
             { label: "Postman", icon: "siPostman" },
             { label: "Linux", icon: "siLinux" },
             { label: "VirtualBox", icon: "siVirtualbox" },
@@ -380,6 +381,7 @@ const CONTENT = {
             { label: "Git", icon: "siGit" },
             { label: "GitHub", icon: "siGithub" },
             { label: "GitHub Actions", icon: "siGithubactions" },
+            { label: "Docker", icon: "siDocker" },
             { label: "Postman", icon: "siPostman" },
             { label: "Linux", icon: "siLinux" },
             { label: "VirtualBox", icon: "siVirtualbox" },
@@ -494,7 +496,7 @@ const SI_ICONS = {
   siGooglecloud, siFirebase, siVercel,
   siSupabase, siMysql,
   siTensorflow, siKeras, siOnnx,
-  siGit, siGithub, siGithubactions, siPostman, siLinux, siVirtualbox, siFigma,
+  siGit, siGithub, siGithubactions, siPostman, siLinux, siVirtualbox, siFigma, siDocker,
 };
 
 // # Tech Stack Tag with optional brand icon
