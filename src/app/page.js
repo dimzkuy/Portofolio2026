@@ -386,6 +386,8 @@ const CONTENT = {
             { label: "Linux", icon: "siLinux" },
             { label: "VirtualBox", icon: "siVirtualbox" },
             { label: "Figma", icon: "siFigma" },
+            { label: "VS Code", icon: "siVisualstudiocode" },
+
           ],
         },
       ],
