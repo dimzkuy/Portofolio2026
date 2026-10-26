@@ -8,6 +8,14 @@ import "aos/dist/aos.css";
 import { getProjectsByLang, PROJECT_ICONS } from "@/data/projects";
 import TechText from "@/components/TechText";
 import ProfileFrame from "@/components/ProfileFrame";
+import {
+  siJavascript, siPython, siPhp, siHtml5, siCss,
+  siReact, siNextdotjs, siTailwindcss, siFastapi,
+  siGooglecloud, siFirebase, siVercel,
+  siSupabase, siMysql,
+  siTensorflow, siKeras, siOnnx,
+  siGit, siGithub, siGithubactions, siPostman, siLinux, siVirtualbox, siFigma,
+} from "simple-icons";
 
 // # Bilingual Content
 const CONTENT = {
@@ -16,7 +24,7 @@ const CONTENT = {
       { href: "#about", label: "About" },
       { href: "#projects", label: "Projects" },
       { href: "#experience", label: "Experience" },
-      { href: "#skills", label: "Skills" },
+      { href: "#techstack", label: "Tech Stack" },
       { href: "#education", label: "Education" },
       { href: "#contact", label: "Contact" },
     ],
@@ -98,38 +106,69 @@ const CONTENT = {
         },
       ],
     },
-    skills: {
+    techstack: {
       index: "05",
-      title: "TECHNICAL SKILLS",
-      setPrefix: "SET",
+      title: "TECH STACK",
       items: [
         {
           index: "01",
-          mono: "SYNTAX",
-          title: "Programming Languages",
-          tags: ["HTML", "CSS", "JavaScript", "Python", "PHP"],
-          footnote: "WEB · SCRIPTING · DATA",
+          mono: "LANGUAGES · FRAMEWORKS",
+          title: "Frontend & Backend",
+          tags: [
+            { label: "JavaScript", icon: "siJavascript" },
+            { label: "Python", icon: "siPython" },
+            { label: "PHP", icon: "siPhp" },
+            { label: "HTML", icon: "siHtml5" },
+            { label: "CSS", icon: "siCss" },
+            { label: "React", icon: "siReact" },
+            { label: "Next.js", icon: "siNextdotjs" },
+            { label: "Tailwind CSS", icon: "siTailwindcss" },
+            { label: "FastAPI", icon: "siFastapi" },
+          ],
         },
         {
           index: "02",
-          mono: "FRAMEWORKS",
-          title: "Frontend & Backend",
-          tags: ["Next.js", "React", "FastAPI", "Tailwind CSS"],
-          footnote: "FRONTEND · API · WEB",
+          mono: "CLOUD · PLATFORMS",
+          title: "Cloud Platforms",
+          tags: [
+            { label: "Google Cloud Platform", icon: "siGooglecloud" },
+            { label: "Firebase", icon: "siFirebase" },
+            { label: "Vercel", icon: "siVercel" },
+          ],
         },
         {
           index: "03",
-          mono: "INFERENCE",
-          title: "Machine Learning & Data",
-          tags: ["ONNX Runtime", "TensorFlow"],
-          footnote: "MODEL INTEGRATION · INFERENCE",
+          mono: "DATABASE · SERVICES",
+          title: "Databases & Backend Services",
+          tags: [
+            { label: "Supabase", icon: "siSupabase" },
+            { label: "MySQL", icon: "siMysql" },
+          ],
         },
         {
           index: "04",
-          mono: "INFRA",
-          title: "Cloud & Deployment",
-          tags: ["Google Cloud Platform", "Firebase", "Vercel", "Git", "Linux", "Docker"],
-          footnote: "CLOUD · DEPLOYMENT · VERSION CONTROL",
+          mono: "ML · INFERENCE",
+          title: "Machine Learning",
+          tags: [
+            { label: "TensorFlow", icon: "siTensorflow" },
+            { label: "Keras", icon: "siKeras" },
+            { label: "ONNX Runtime", icon: "siOnnx" },
+          ],
+        },
+        {
+          index: "05",
+          mono: "TOOLS · WORKFLOW",
+          title: "Development Tools",
+          tags: [
+            { label: "Git", icon: "siGit" },
+            { label: "GitHub", icon: "siGithub" },
+            { label: "GitHub Actions", icon: "siGithubactions" },
+            { label: "Postman", icon: "siPostman" },
+            { label: "Linux", icon: "siLinux" },
+            { label: "VirtualBox", icon: "siVirtualbox" },
+            { label: "Figma", icon: "siFigma" },
+            { label: "VS Code", icon: "siVisualstudiocode" },
+          ],
         },
       ],
     },
@@ -194,7 +233,7 @@ const CONTENT = {
       { href: "#about", label: "Tentang" },
       { href: "#projects", label: "Proyek" },
       { href: "#experience", label: "Pengalaman" },
-      { href: "#skills", label: "Keahlian" },
+      { href: "#techstack", label: "Tech Stack" },
       { href: "#education", label: "Pendidikan" },
       { href: "#contact", label: "Kontak" },
     ],
@@ -282,38 +321,70 @@ const CONTENT = {
         },
       ],
     },
-    skills: {
+    techstack: {
       index: "05",
-      title: "KEAHLIAN TEKNIS",
-      setPrefix: "KUMPULAN",
+      title: "TECH STACK",
       items: [
         {
           index: "01",
-          mono: "SYNTAX",
-          title: "Bahasa Pemrograman",
-          tags: ["HTML", "CSS", "JavaScript", "Python", "PHP"],
-          footnote: "WEB · SCRIPTING · DATA",
+          mono: "BAHASA · FRAMEWORK",
+          title: "Frontend & Backend",
+          tags: [
+            { label: "JavaScript", icon: "siJavascript" },
+            { label: "Python", icon: "siPython" },
+            { label: "PHP", icon: "siPhp" },
+            { label: "HTML", icon: "siHtml5" },
+            { label: "CSS", icon: "siCss" },
+            { label: "React", icon: "siReact" },
+            { label: "Next.js", icon: "siNextdotjs" },
+            { label: "Tailwind CSS", icon: "siTailwindcss" },
+            { label: "FastAPI", icon: "siFastapi" },
+          ],
         },
         {
           index: "02",
-          mono: "FRAMEWORKS",
-          title: "Frontend & Backend",
-          tags: ["Next.js", "React", "FastAPI", "Tailwind CSS"],
-          footnote: "FRONTEND · API · WEB",
+          mono: "CLOUD · PLATFORM",
+          title: "Platform Cloud",
+          tags: [
+            { label: "Google Cloud Run", icon: "siGooglecloud" },
+            { label: "Google Cloud Storage", icon: "siGooglecloud" },
+            { label: "Firebase App Hosting", icon: "siFirebase" },
+            { label: "Firebase", icon: "siFirebase" },
+            { label: "Vercel", icon: "siVercel" },
+          ],
         },
         {
           index: "03",
-          mono: "INFERENCE",
-          title: "Machine Learning & Data",
-          tags: ["ONNX Runtime", "TensorFlow"],
-          footnote: "INTEGRASI MODEL · INFERENSI",
+          mono: "DATABASE · LAYANAN",
+          title: "Database & Layanan Backend",
+          tags: [
+            { label: "Supabase", icon: "siSupabase" },
+            { label: "MySQL", icon: "siMysql" },
+          ],
         },
         {
           index: "04",
-          mono: "INFRA",
-          title: "Cloud & Deployment",
-          tags: ["Google Cloud Platform", "Firebase", "Vercel", "Git", "Linux", "Docker"],
-          footnote: "CLOUD · DEPLOYMENT · KONTROL VERSI",
+          mono: "ML · INFERENSI",
+          title: "Machine Learning",
+          tags: [
+            { label: "TensorFlow", icon: "siTensorflow" },
+            { label: "Keras", icon: "siKeras" },
+            { label: "ONNX Runtime", icon: "siOnnx" },
+          ],
+        },
+        {
+          index: "05",
+          mono: "TOOLS · WORKFLOW",
+          title: "Development Tools",
+          tags: [
+            { label: "Git", icon: "siGit" },
+            { label: "GitHub", icon: "siGithub" },
+            { label: "GitHub Actions", icon: "siGithubactions" },
+            { label: "Postman", icon: "siPostman" },
+            { label: "Linux", icon: "siLinux" },
+            { label: "VirtualBox", icon: "siVirtualbox" },
+            { label: "Figma", icon: "siFigma" },
+          ],
         },
       ],
     },
@@ -412,6 +483,45 @@ function Tag({ children }) {
       }}
     >
       {children}
+    </span>
+  );
+}
+
+// # Simple Icons lookup map
+const SI_ICONS = {
+  siJavascript, siPython, siPhp, siHtml5, siCss,
+  siReact, siNextdotjs, siTailwindcss, siFastapi,
+  siGooglecloud, siFirebase, siVercel,
+  siSupabase, siMysql,
+  siTensorflow, siKeras, siOnnx,
+  siGit, siGithub, siGithubactions, siPostman, siLinux, siVirtualbox, siFigma,
+};
+
+// # Tech Stack Tag with optional brand icon
+function TechTag({ label, iconKey }) {
+  const si = iconKey ? SI_ICONS[iconKey] : null;
+  return (
+    <span
+      className="inline-flex items-center gap-1.5 px-2 py-1 text-label-sm"
+      style={{
+        background: "#F5F1EF",
+        border: "1px solid #3D1106",
+        color: "#242120",
+      }}
+    >
+      {si && (
+        <svg
+          role="img"
+          aria-hidden="true"
+          viewBox="0 0 24 24"
+          width="13"
+          height="13"
+          style={{ flexShrink: 0, fill: "#242120" }}
+        >
+          <path d={si.path} />
+        </svg>
+      )}
+      {label}
     </span>
   );
 }
@@ -1232,52 +1342,51 @@ export default function Home() {
           </div>
         </section>
 
-        {/* # Skills */}
+        {/* # Skills / Tech Stack */}
         <section
-          id="skills"
+          id="techstack"
           className="w-full max-w-[76rem] mx-auto px-5 md:px-16 py-24"
           style={{ borderBottom: "1.5px solid #3D1106" }}
         >
-          <SectionHeader index={t.skills.index} title={t.skills.title} subtitle={t.skills.subtitle} />
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {t.skills.items.map((s, idx) => (
+          <SectionHeader index={t.techstack.index} title={t.techstack.title} subtitle={t.techstack.subtitle} />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {t.techstack.items.map((s, idx) => (
               <div
                 key={s.index}
                 data-aos="fade-up"
                 data-aos-delay={idx * 100}
-                className="bg-white p-6 flex flex-col justify-between"
+                className="bg-white p-6 flex flex-col"
                 style={{ border: "1.5px solid #3D1106", boxShadow: "3px 3px 0px 0px #3D1106" }}
               >
-                <div>
-                  <div
-                    className="pb-2 mb-4 flex items-center justify-between"
-                    style={{ borderBottom: "1px solid #3D1106" }}
-                  >
-                    <span className="text-label-sm uppercase tracking-wider font-bold" style={{ color: "#3D1106" }}>
-                      {t.skills.setPrefix} // {s.index}
+                {/* Category header */}
+                <div
+                  className="pb-2 mb-5 flex items-center justify-between"
+                  style={{ borderBottom: "1px solid #3D1106" }}
+                >
+                  <div className="flex items-center gap-2">
+                    <span
+                      className="text-label-sm uppercase tracking-wider font-bold"
+                      style={{ color: "#3D1106" }}
+                    >
+                      {s.index} /
                     </span>
-                    <span className="font-mono text-[10px]" style={{ color: "#716966" }}>{s.mono}</span>
+                    <h3
+                      className="text-label-sm uppercase tracking-wider font-bold"
+                      style={{ color: "#242120" }}
+                    >
+                      {s.title}
+                    </h3>
                   </div>
-                  <h3 className="text-headline-sm mb-4" style={{ color: "#242120" }}>{s.title}</h3>
-                  <div className="flex flex-wrap gap-1">
-                    {s.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="px-2 py-1 text-label-sm"
-                        style={{
-                          background: "#F5F1EF",
-                          border: "1px solid #3D1106",
-                          color: "#242120",
-                        }}
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
+                  <span className="font-mono text-[9px] tracking-widest" style={{ color: "#716966" }}>
+                    {s.mono}
+                  </span>
                 </div>
-                <span className="font-mono text-[9px] uppercase mt-6 block" style={{ color: "#716966" }}>
-                  {s.footnote}
-                </span>
+                {/* Tech tags */}
+                <div className="flex flex-wrap gap-1.5">
+                  {s.tags.map((tag) => (
+                    <TechTag key={tag.label} label={tag.label} iconKey={tag.icon} />
+                  ))}
+                </div>
               </div>
             ))}
           </div>
