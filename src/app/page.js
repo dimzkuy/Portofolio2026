@@ -9,13 +9,14 @@ import { getProjectsByLang, PROJECT_ICONS } from "@/data/projects";
 import TechText from "@/components/TechText";
 import ProfileFrame from "@/components/ProfileFrame";
 import {
-  siJavascript, siPython, siPhp, siHtml5, siCss,
-  siReact, siNextdotjs, siTailwindcss, siFastapi,
-  siGooglecloud, siFirebase, siVercel,
-  siSupabase, siMysql,
-  siTensorflow, siKeras, siOnnx,
-  siGit, siGithub, siGithubactions, siPostman, siLinux, siVirtualbox, siFigma, siDocker,
-} from "simple-icons";
+  SiJavascript, SiPython, SiPhp, SiHtml5, SiCss,
+  SiReact, SiNextdotjs, SiTailwindcss, SiFastapi,
+  SiGooglecloud, SiFirebase, SiVercel,
+  SiSupabase, SiMysql,
+  SiTensorflow, SiKeras, SiOnnx,
+  SiGit, SiGithub, SiGithubactions, SiPostman, SiLinux, SiVirtualbox, SiFigma, SiDocker,
+} from "react-icons/si";
+import { VscVscode } from "react-icons/vsc";
 
 // # Bilingual Content
 const CONTENT = {
@@ -491,19 +492,39 @@ function Tag({ children }) {
   );
 }
 
-// # Simple Icons lookup map
-const SI_ICONS = {
-  siJavascript, siPython, siPhp, siHtml5, siCss,
-  siReact, siNextdotjs, siTailwindcss, siFastapi,
-  siGooglecloud, siFirebase, siVercel,
-  siSupabase, siMysql,
-  siTensorflow, siKeras, siOnnx,
-  siGit, siGithub, siGithubactions, siPostman, siLinux, siVirtualbox, siFigma, siDocker,
+// # React Icons lookup map for Tech Stack
+const TECH_ICONS = {
+  siJavascript: SiJavascript,
+  siPython: SiPython,
+  siPhp: SiPhp,
+  siHtml5: SiHtml5,
+  siCss: SiCss,
+  siReact: SiReact,
+  siNextdotjs: SiNextdotjs,
+  siTailwindcss: SiTailwindcss,
+  siFastapi: SiFastapi,
+  siGooglecloud: SiGooglecloud,
+  siFirebase: SiFirebase,
+  siVercel: SiVercel,
+  siSupabase: SiSupabase,
+  siMysql: SiMysql,
+  siTensorflow: SiTensorflow,
+  siKeras: SiKeras,
+  siOnnx: SiOnnx,
+  siGit: SiGit,
+  siGithub: SiGithub,
+  siGithubactions: SiGithubactions,
+  siPostman: SiPostman,
+  siLinux: SiLinux,
+  siVirtualbox: SiVirtualbox,
+  siFigma: SiFigma,
+  siDocker: SiDocker,
+  siVisualstudiocode: VscVscode,
 };
 
 // # Tech Stack Tag with optional brand icon
 function TechTag({ label, iconKey }) {
-  const si = iconKey ? SI_ICONS[iconKey] : null;
+  const IconComponent = iconKey ? TECH_ICONS[iconKey] : null;
   return (
     <span
       className="inline-flex items-center gap-1.5 px-2 py-1 text-label-sm"
@@ -513,17 +534,13 @@ function TechTag({ label, iconKey }) {
         color: "#242120",
       }}
     >
-      {si && (
-        <svg
-          role="img"
+      {IconComponent && (
+        <IconComponent
+          size={13}
+          className="shrink-0"
           aria-hidden="true"
-          viewBox="0 0 24 24"
-          width="13"
-          height="13"
-          style={{ flexShrink: 0, fill: "#242120" }}
-        >
-          <path d={si.path} />
-        </svg>
+          style={{ color: "#242120" }}
+        />
       )}
       {label}
     </span>
@@ -1364,24 +1381,27 @@ export default function Home() {
               >
                 {/* Category header */}
                 <div
-                  className="pb-2 mb-5 flex items-center justify-between"
+                  className="pb-2 mb-5 flex items-start justify-between gap-3"
                   style={{ borderBottom: "1px solid #3D1106" }}
                 >
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-baseline gap-2 min-w-0">
                     <span
-                      className="text-label-sm uppercase tracking-wider font-bold"
+                      className="text-label-sm uppercase tracking-wider font-bold shrink-0 whitespace-nowrap"
                       style={{ color: "#3D1106" }}
                     >
                       {s.index} /
                     </span>
                     <h3
-                      className="text-label-sm uppercase tracking-wider font-bold"
+                      className="text-label-sm uppercase tracking-wider font-bold leading-tight"
                       style={{ color: "#242120" }}
                     >
                       {s.title}
                     </h3>
                   </div>
-                  <span className="font-mono text-[9px] tracking-widest" style={{ color: "#716966" }}>
+                  <span
+                    className="font-mono text-[9px] tracking-wider uppercase shrink-0 whitespace-nowrap text-right pt-0.5"
+                    style={{ color: "#716966" }}
+                  >
                     {s.mono}
                   </span>
                 </div>
@@ -1413,11 +1433,11 @@ export default function Home() {
                 style={{ border: "1.5px solid #3D1106", boxShadow: "4px 4px 0px 0px #3D1106" }}
               >
                 <div>
-                  <div className="flex items-start justify-between mb-2">
-                    <span className="text-label-sm uppercase tracking-wider font-bold" style={{ color: "#3D1106" }}>
+                  <div className="flex items-start justify-between gap-3 mb-2">
+                    <span className="text-label-sm uppercase tracking-wider font-bold shrink-0 whitespace-nowrap" style={{ color: "#3D1106" }}>
                       {t.education.prefix} // {e.index}
                     </span>
-                    <span className="font-mono text-label-sm" style={{ color: "#716966" }}>{e.period}</span>
+                    <span className="font-mono text-label-sm shrink-0 whitespace-nowrap text-right" style={{ color: "#716966" }}>{e.period}</span>
                   </div>
                   <h3 className="text-headline-lg mb-1" style={{ color: "#242120" }}>{e.degree}</h3>
                   <p className="text-body-md font-medium mb-4" style={{ color: "#645d5a" }}>{e.institution}</p>
@@ -1430,11 +1450,11 @@ export default function Home() {
                 </div>
                 {e.footer && (
                   <div
-                    className="mt-6 pt-2 flex items-center justify-between"
+                    className="mt-6 pt-2 flex items-center justify-between gap-3"
                     style={{ borderTop: "1px solid rgba(61,17,6,0.15)" }}
                   >
-                    <span className="font-mono text-[9px] uppercase" style={{ color: "#716966" }}>{e.footer.left}</span>
-                    <span className="text-label-sm uppercase font-bold" style={{ color: "#3D1106" }}>{e.footer.right}</span>
+                    <span className="font-mono text-[9px] uppercase shrink-0 whitespace-nowrap" style={{ color: "#716966" }}>{e.footer.left}</span>
+                    <span className="text-label-sm uppercase font-bold shrink-0 whitespace-nowrap text-right" style={{ color: "#3D1106" }}>{e.footer.right}</span>
                   </div>
                 )}
               </div>
