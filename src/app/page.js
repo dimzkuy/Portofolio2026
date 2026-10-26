@@ -149,7 +149,7 @@ const CONTENT = {
         {
           index: "04",
           mono: "ML · INFERENCE",
-          title: "Machine Learning",
+          title: "Machine Learning & Computer Vision",
           tags: [
             { label: "TensorFlow", icon: "siTensorflow" },
             { label: "Keras", icon: "siKeras" },
@@ -367,7 +367,7 @@ const CONTENT = {
         {
           index: "04",
           mono: "ML · INFERENSI",
-          title: "Machine Learning",
+          title: "Machine Learning & Computer Vision",
           tags: [
             { label: "TensorFlow", icon: "siTensorflow" },
             { label: "Keras", icon: "siKeras" },
