@@ -1180,7 +1180,7 @@ export default function Home() {
               onMouseEnter={(e) => (e.currentTarget.style.boxShadow = "2px 2px 0px 0px rgba(61,17,6,0.35)")}
               onMouseLeave={(e) => (e.currentTarget.style.boxShadow = "4px 4px 0px 0px rgba(61,17,6,0.35)")}
             >
-              <span>{lang === "ID" ? "Proyek Lainnya" : "More Projects"}</span>
+              <span>{lang === "ID" ? "Lihat Semua Proyek" : "View All Projects"}</span>
               <span className="material-symbols-outlined" style={{ fontSize: 18 }}>north_east</span>
             </Link>
           </div>
