@@ -93,6 +93,30 @@ export const PROJECTS = [
       ID: "Flutter • Firebase • Figma • Redesign Dompet Digital"
     },
   },
+  {
+    id: "movie-booking",
+    title: "Movie Booking App",
+    year: "2025",
+    featured: false, // Shown on /projects only
+    badge: "College Project",
+    image: "/assets/projects/CinemaBook-Pemesanan Tiket Bioskop.png",
+    github: "https://github.com/dimzkuy/CLO4_TB_KPL",
+    demo: null,
+    tags: ["Python", "Flask", "HTML", "CSS", "JavaScript"],
+
+    description: {
+      EN: "A web-based movie ticket booking application developed to provide users with a streamlined experience for browsing movies and managing ticket reservations.",
+      ID: "Aplikasi pemesanan tiket bioskop berbasis web yang dikembangkan untuk memberikan pengalaman pengguna dalam menjelajahi film dan mengelola pemesanan tiket secara praktis."
+    },
+    contribution: {
+      EN: "Designed and implemented the automata component, applied the Singleton design pattern, and incorporated Clean Code and Secure Coding standards into the login functionality. Also managed the team's GitHub repository and contributed to technical documentation and presentation materials.",
+      ID: "Merancang dan mengimplementasikan bagian automata, menerapkan Singleton Design Pattern, serta mengintegrasikan standar Clean Code dan Secure Coding pada fungsionalitas login. Turut mengelola repository GitHub kelompok serta menyusun dokumentasi teknis dan materi presentasi."
+    },
+    placeholderText: {
+      EN: "Python • Flask • Software Engineering • Movie Booking",
+      ID: "Python • Flask • Rekayasa Perangkat Lunak • Pemesanan Tiket Bioskop"
+    },
+  },
 ];
 
 // # Project Icons (SVG)

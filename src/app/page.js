@@ -17,6 +17,7 @@ import {
   SiGit, SiGithub, SiGithubactions, SiPostman, SiLinux, SiVirtualbox, SiFigma, SiDocker,
 } from "react-icons/si";
 import { VscVscode } from "react-icons/vsc";
+import { MdArrowDownward } from "react-icons/md";
 
 // # Bilingual Content
 const CONTENT = {
@@ -1234,7 +1235,11 @@ export default function Home() {
                   onMouseLeave={(e) => (e.currentTarget.style.boxShadow = "3px 3px 0px 0px #3D1106")}
                 >
                   <span>{t.hero.downloadCv}</span>
-                  <span className="material-symbols-outlined shrink-0" style={{ fontSize: 18 }}>arrow_downward</span>
+                  <MdArrowDownward
+                    size={18}
+                    className="shrink-0"
+                    aria-hidden="true"
+                  />
                 </a>
 
                 <a
