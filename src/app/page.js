@@ -8,6 +8,7 @@ import "aos/dist/aos.css";
 import { getProjectsByLang, PROJECT_ICONS } from "@/data/projects";
 import TechText from "@/components/TechText";
 import ProfileFrame from "@/components/ProfileFrame";
+import CertificationSection from "@/components/CertificationSection";
 import {
   SiJavascript, SiPython, SiPhp, SiHtml5, SiCss,
   SiReact, SiNextdotjs, SiTailwindcss, SiFastapi,
@@ -28,6 +29,7 @@ const CONTENT = {
       { href: "#experience", label: "Experience" },
       { href: "#techstack", label: "Tech Stack" },
       { href: "#education", label: "Education" },
+      { href: "#certifications", label: "Certifications" },
       { href: "#contact", label: "Contact" },
     ],
     hero: {
@@ -209,8 +211,13 @@ const CONTENT = {
         },
       ],
     },
-    contact: {
+    certifications: {
       index: "07",
+      title: "CERTIFICATIONS",
+      subtitle: "Verified Licenses & Credentials",
+    },
+    contact: {
+      index: "08",
       title: "CONTACT",
       heading: "Let's Connect!",
       subtext:
@@ -235,7 +242,8 @@ const CONTENT = {
         { href: "#experience", label: "03 / Experience" },
         { href: "#techstack", label: "04 / Tech Stack" },
         { href: "#education", label: "05 / Education" },
-        { href: "#contact", label: "06 / Contact" },
+        { href: "#certifications", label: "06 / Certifications" },
+        { href: "#contact", label: "07 / Contact" },
       ],
       copyright: "All rights reserved.",
     },
@@ -247,6 +255,7 @@ const CONTENT = {
       { href: "#experience", label: "Pengalaman" },
       { href: "#techstack", label: "Tech Stack" },
       { href: "#education", label: "Pendidikan" },
+      { href: "#certifications", label: "Sertifikasi" },
       { href: "#contact", label: "Kontak" },
     ],
     hero: {
@@ -436,8 +445,16 @@ const CONTENT = {
         },
       ],
     },
-    contact: {
+    certifications: {
       index: "07",
+      title: "SERTIFIKASI",
+    },
+    certifications: {
+      index: "07",
+      title: "CERTIFICATIONS",
+    },
+    contact: {
+      index: "08",
       title: "KONTAK",
       heading: "Mari Terhubung!",
       subtext:
@@ -463,7 +480,8 @@ const CONTENT = {
         { href: "#experience", label: "03 / Pengalaman" },
         { href: "#techstack", label: "04 / Tech Stack" },
         { href: "#education", label: "05 / Pendidikan" },
-        { href: "#contact", label: "06 / Kontak" },
+        { href: "#certifications", label: "06 / Sertifikasi" },
+        { href: "#contact", label: "07 / Kontak" },
       ],
       copyright: "Hak cipta dilindungi.",
     },
@@ -1053,7 +1071,7 @@ export default function Home() {
 
           {/* # Desktop nav & Language Switcher */}
           <div className="hidden lg:flex items-center gap-8">
-            <nav className="flex items-center gap-8">
+            <nav className="flex items-center gap-5 xl:gap-8">
               {t.nav.map((l) => (
                 <a
                   key={l.href}
@@ -1483,6 +1501,9 @@ export default function Home() {
             ))}
           </div>
         </section>
+
+        {/* # Certifications */}
+        <CertificationSection lang={lang} content={t.certifications} />
 
         {/* # Contact */}
         <section
