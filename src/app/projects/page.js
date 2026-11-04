@@ -49,11 +49,11 @@ function SectionHeader({ index, title, subtitle }) {
   );
 }
 
-// # Tag Chip Component (Exact match with page.js: text-label-sm)
+// # Tag Chip Component (Slightly reduced font size for 3-column cards)
 function Tag({ children }) {
   return (
     <span
-      className="px-2 py-[2px] text-label-sm"
+      className="px-2 py-[2px] text-[10px] font-bold tracking-wide"
       style={{
         background: "#F5F1EF",
         border: "1px solid rgba(113,105,102,0.3)",
@@ -65,11 +65,11 @@ function Tag({ children }) {
   );
 }
 
-// # Project Card Component (Exact match with page.js)
+// # Project Card Component (3-column responsive card)
 function ProjectCard({ project, icon, labels }) {
   return (
     <article
-      className="flex flex-col bg-white transition-transform hover:-translate-y-1"
+      className="flex flex-col h-full bg-white transition-transform hover:-translate-y-1"
       style={{
         border: "1.5px solid #3D1106",
         boxShadow: "4px 4px 0px 0px #3D1106",
@@ -79,7 +79,7 @@ function ProjectCard({ project, icon, labels }) {
       <div
         className="relative overflow-hidden flex flex-col items-center justify-center text-center bg-[#F5F1EF]"
         style={{
-          aspectRatio: "16/9",
+          aspectRatio: "16/10",
           borderBottom: "1.5px solid #3D1106",
         }}
       >
@@ -91,16 +91,16 @@ function ProjectCard({ project, icon, labels }) {
             draggable={false}
           />
         ) : (
-          <div className="w-full h-full absolute inset-0 flex flex-col items-center justify-center p-6">
+          <div className="w-full h-full absolute inset-0 flex flex-col items-center justify-center p-4">
             <div
-              className="w-full h-full flex flex-col items-center justify-center text-center p-6"
+              className="w-full h-full flex flex-col items-center justify-center text-center p-4"
               style={{
                 border: "1px dashed rgba(61,17,6,0.25)",
                 background: "rgba(255,255,255,0.5)",
               }}
             >
               <span style={{ color: "#716966" }}>{icon}</span>
-              <span className="text-label-sm uppercase tracking-widest font-bold mt-3 block" style={{ color: "#242120" }}>
+              <span className="text-label-sm uppercase tracking-widest font-bold mt-2 block" style={{ color: "#242120" }}>
                 {labels.placeholder}
               </span>
               <span className="text-body-sm mt-1 block" style={{ color: "#716966" }}>
@@ -126,23 +126,23 @@ function ProjectCard({ project, icon, labels }) {
       </div>
 
       {/* # Body */}
-      <div className="p-6 flex-1 flex flex-col justify-between">
+      <div className="p-5 flex-1 flex flex-col justify-between">
         <div>
           <div className="flex items-baseline justify-between mb-1">
-            <h3 className="text-xl md:text-2xl font-semibold tracking-tight" style={{ color: "#242120", fontFamily: "var(--font-serif)" }}>
+            <h3 className="text-lg md:text-xl font-semibold tracking-tight" style={{ color: "#242120", fontFamily: "var(--font-serif)" }}>
               {project.title}
             </h3>
             <span className="font-mono text-label-sm" style={{ color: "#716966" }}>
               {project.year}
             </span>
           </div>
-          <p className="text-body-md mb-6 leading-normal" style={{ color: "#645d5a" }}>
+          <p className="text-body-sm mb-4 leading-normal" style={{ color: "#645d5a" }}>
             {project.description}
           </p>
 
           {/* # Tech stack tags */}
           <div
-            className="flex items-center gap-1.5 flex-wrap mb-6 py-2"
+            className="flex items-center gap-1.5 flex-wrap mb-4 py-2"
             style={{ borderTop: "1px solid rgba(61,17,6,0.15)", borderBottom: "1px solid rgba(61,17,6,0.15)" }}
           >
             {(Array.isArray(project.tags) ? project.tags : Object.values(project.tags).flat()).map((t) => (
@@ -153,7 +153,7 @@ function ProjectCard({ project, icon, labels }) {
 
         {/* # Contribution block */}
         <div
-          className="pt-4 p-3 mt-2"
+          className="pt-4 p-3 mt-auto"
           style={{
             borderTop: "1.5px solid #3D1106",
             background: "rgba(245,241,239,0.4)",
@@ -225,7 +225,7 @@ export default function ProjectsPage() {
     <>
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-white">
-        <div className="h-16 max-w-[76rem] mx-auto flex items-center justify-end px-5 md:px-16">
+        <div className="h-16 max-w-7xl mx-auto flex items-center justify-end px-5 md:px-10 lg:px-12">
           <div className="flex items-center gap-1.5 font-mono text-label-sm uppercase tracking-wider select-none">
             {["EN", "ID"].map((l, i) => (
               <span key={l} className="flex items-center gap-1.5">
@@ -244,7 +244,7 @@ export default function ProjectsPage() {
       </header>
 
       <main className="flex-1 pt-16 bg-white min-h-screen">
-        <section className="w-full max-w-[76rem] mx-auto px-5 md:px-16 py-12 md:py-16">
+        <section className="w-full max-w-7xl mx-auto px-5 md:px-10 lg:px-12 py-12 md:py-16">
           {/* Top Back to Home Button */}
           <div className="mb-10">
             <Link
@@ -268,7 +268,7 @@ export default function ProjectsPage() {
           <SectionHeader index={labels.headerIndex} title={labels.headerTitle} subtitle={labels.headerSubtitle} />
 
           {/* Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 pb-20">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch pb-20">
             {projectItems.map((p) => (
               <ProjectCard
                 key={p.id}

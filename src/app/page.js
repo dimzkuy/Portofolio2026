@@ -42,8 +42,8 @@ const CONTENT = {
     about: {
       index: "01",
       title: "ABOUT",
-      p1: "I am a software developer with a background in Software Engineering and experience building full-stack web applications. I focus on connecting user interfaces, backend services, and API integrations to create practical and maintainable software solutions.",
-      p2: "My experience spans web development, machine learning integration, and cloud deployment. I value clean implementation, thoughtful technical decisions, and reliable applications that balance functionality, maintainability, and user needs."
+      p1: "I am a Full Stack Developer with a background in Software Engineering. I enjoy building web applications and exploring how different parts of a system work together, from user interfaces and backend logic to APIs and external services. For me, development is not just about making features work, but understanding how they fit into a complete application.",
+      p2: "My experience includes building applications with Next.js and Python, integrating machine learning models into web applications, and working with cloud deployment. I am particularly interested in the intersection of software development and practical problem-solving, where I can turn technical ideas into functional applications while continuing to grow as an engineer."
     },
     projects: {
       index: "02",
@@ -261,8 +261,8 @@ const CONTENT = {
     about: {
       index: "01",
       title: "TENTANG",
-      p1: "Saya adalah seorang software developer dengan latar belakang Rekayasa Perangkat Lunak dan pengalaman dalam pengembangan aplikasi web full-stack. Saya berfokus pada pengintegrasian antarmuka pengguna, layanan backend, dan API untuk membangun solusi perangkat lunak yang fungsional dan mudah dipelihara.",
-      p2: "Pengalaman saya mencakup pengembangan web, integrasi machine learning, dan deployment aplikasi ke cloud. Saya mengutamakan implementasi yang terstruktur, pertimbangan teknis yang matang, serta aplikasi yang andal dengan memperhatikan fungsionalitas, kemudahan pemeliharaan, dan kebutuhan pengguna."
+      p1: "Saya adalah seorang Full Stack Developer dengan latar belakang Rekayasa Perangkat Lunak. Saya menikmati proses membangun aplikasi web dan memahami bagaimana setiap bagian sistem saling terhubung, mulai dari antarmuka pengguna, logika backend, hingga API dan layanan eksternal. Bagi saya, pengembangan perangkat lunak bukan sekadar membuat fitur berjalan, tetapi juga memahami bagaimana setiap komponen bekerja sebagai satu kesatuan aplikasi.",
+      p2: "Pengalaman saya mencakup pengembangan aplikasi menggunakan Next.js dan Python, integrasi model machine learning ke dalam aplikasi web, serta deployment aplikasi ke cloud. Saya tertarik pada perpaduan antara pengembangan perangkat lunak dan pemecahan masalah praktis, dengan tujuan mengubah ide teknis menjadi aplikasi yang fungsional sekaligus terus mengembangkan kemampuan sebagai seorang engineer."
     },
     projects: {
       index: "02",

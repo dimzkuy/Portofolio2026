@@ -353,7 +353,7 @@ export default function ProfileFrame({ lang = "EN" }) {
               className="text-label-sm font-mono tracking-tight mt-0.5"
               style={{ color: "#716966" }}
             >
-              {isId ? "Rekayasa Perangkat Lunak" : "Software Engineering"}
+              {isId ? "Full Stack Developer" : "Full Stack Developer"}
             </p>
           </div>
 
