@@ -1,9 +1,30 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useSyncExternalStore } from "react";
 import Link from "next/link";
 
 import { getProjectsByLang, PROJECT_ICONS } from "@/data/projects";
+
+const subscribeLang = (callback) => {
+  if (typeof window === "undefined") return () => {};
+  window.addEventListener("storage", callback);
+  window.addEventListener("portfolio-lang-change", callback);
+  return () => {
+    window.removeEventListener("storage", callback);
+    window.removeEventListener("portfolio-lang-change", callback);
+  };
+};
+
+const getLangSnapshot = () => {
+  try {
+    const val = window.localStorage.getItem("preferred_lang");
+    return val === "ID" ? "ID" : "EN";
+  } catch {
+    return "EN";
+  }
+};
+
+const getLangServerSnapshot = () => "EN";
 
 const LABELS = {
   EN: {
@@ -14,6 +35,7 @@ const LABELS = {
     contributionTitle: "My Contribution",
     githubBtn: "[ GitHub Repo ]",
     demoBtn: "[ Live Demo ]",
+    viewDetailsBtn: "[ View Details ]",
   },
   ID: {
     headerIndex: "01",
@@ -23,6 +45,7 @@ const LABELS = {
     contributionTitle: "Kontribusi Saya",
     githubBtn: "[ Repositori GitHub ]",
     demoBtn: "[ Demo Langsung ]",
+    viewDetailsBtn: "[ Detail Proyek ]",
   },
 };
 
@@ -49,11 +72,11 @@ function SectionHeader({ index, title, subtitle }) {
   );
 }
 
-// # Tag Chip Component (Slightly reduced font size for 3-column cards)
+// # Tag Chip Component
 function Tag({ children }) {
   return (
     <span
-      className="px-2 py-[2px] text-[10px] font-bold tracking-wide"
+      className="px-2 py-[2px] text-[10.5px] font-bold tracking-wide"
       style={{
         background: "#F5F1EF",
         border: "1px solid rgba(113,105,102,0.3)",
@@ -65,21 +88,21 @@ function Tag({ children }) {
   );
 }
 
-// # Project Card Component (3-column responsive card)
+// # Project Card Component (Exact match with featured projects section)
 function ProjectCard({ project, icon, labels }) {
   return (
     <article
-      className="flex flex-col h-full bg-white transition-transform hover:-translate-y-1"
+      className="flex flex-col bg-white transition-transform hover:-translate-y-1"
       style={{
         border: "1.5px solid #3D1106",
-        boxShadow: "4px 4px 0px 0px #3D1106",
+        boxShadow: "3px 3px 0px 0px #3D1106",
       }}
     >
       {/* # Screenshot / Project Image */}
       <div
         className="relative overflow-hidden flex flex-col items-center justify-center text-center bg-[#F5F1EF]"
         style={{
-          aspectRatio: "16/10",
+          aspectRatio: "16/9",
           borderBottom: "1.5px solid #3D1106",
         }}
       >
@@ -87,20 +110,20 @@ function ProjectCard({ project, icon, labels }) {
           <img
             src={project.image}
             alt={project.title}
-            className="w-full h-full object-cover object-top select-none pointer-events-none"
+            className="w-full h-full object-cover object-top select-none"
             draggable={false}
           />
         ) : (
-          <div className="w-full h-full absolute inset-0 flex flex-col items-center justify-center p-4">
+          <div className="w-full h-full absolute inset-0 flex flex-col items-center justify-center p-6">
             <div
-              className="w-full h-full flex flex-col items-center justify-center text-center p-4"
+              className="w-full h-full flex flex-col items-center justify-center text-center p-6"
               style={{
                 border: "1px dashed rgba(61,17,6,0.25)",
                 background: "rgba(255,255,255,0.5)",
               }}
             >
               <span style={{ color: "#716966" }}>{icon}</span>
-              <span className="text-label-sm uppercase tracking-widest font-bold mt-2 block" style={{ color: "#242120" }}>
+              <span className="text-label-sm uppercase tracking-widest font-bold mt-3 block" style={{ color: "#242120" }}>
                 {labels.placeholder}
               </span>
               <span className="text-body-sm mt-1 block" style={{ color: "#716966" }}>
@@ -126,10 +149,10 @@ function ProjectCard({ project, icon, labels }) {
       </div>
 
       {/* # Body */}
-      <div className="p-5 flex-1 flex flex-col justify-between">
+      <div className="p-4 flex-1 flex flex-col">
         <div>
           <div className="flex items-baseline justify-between mb-1">
-            <h3 className="text-lg md:text-xl font-semibold tracking-tight" style={{ color: "#242120", fontFamily: "var(--font-serif)" }}>
+            <h3 className="text-base font-semibold tracking-tight" style={{ color: "#242120", fontFamily: "var(--font-serif)" }}>
               {project.title}
             </h3>
             <span className="font-mono text-label-sm" style={{ color: "#716966" }}>
@@ -142,60 +165,75 @@ function ProjectCard({ project, icon, labels }) {
 
           {/* # Tech stack tags */}
           <div
-            className="flex items-center gap-1.5 flex-wrap mb-4 py-2"
+            className="flex items-center gap-1 flex-wrap mb-3 py-1.5"
             style={{ borderTop: "1px solid rgba(61,17,6,0.15)", borderBottom: "1px solid rgba(61,17,6,0.15)" }}
           >
             {(Array.isArray(project.tags) ? project.tags : Object.values(project.tags).flat()).map((t) => (
               <Tag key={t}>{t}</Tag>
             ))}
           </div>
+
+          {/* # View Details */}
+          <div className="mb-2">
+            <Link
+              href={`/projects/${project.id}`}
+              className="inline-flex items-center text-label-sm uppercase tracking-wider font-bold transition-colors hover:text-[#3D1106]"
+              style={{ color: "#3D1106" }}
+            >
+              <span>{labels.viewDetailsBtn || "[ View Details ]"}</span>
+            </Link>
+          </div>
         </div>
 
         {/* # Contribution block */}
         <div
-          className="pt-4 p-3 mt-auto"
+          className="pt-3 p-2.5 mt-2 flex-1 flex flex-col justify-between"
           style={{
             borderTop: "1.5px solid #3D1106",
             background: "rgba(245,241,239,0.4)",
           }}
         >
-          <span className="text-label-sm uppercase tracking-wider font-bold block mb-1" style={{ color: "#3D1106" }}>
-            {labels.contributionTitle}
-          </span>
-          <p className="text-body-sm leading-relaxed" style={{ color: "#645d5a" }}>
-            {project.contribution}
-          </p>
+          <div>
+            <span className="text-label-sm uppercase tracking-wider font-bold block mb-1" style={{ color: "#3D1106" }}>
+              {labels.contributionTitle}
+            </span>
+            <p className="text-[12px] leading-relaxed" style={{ color: "#645d5a" }}>
+              {project.contribution}
+            </p>
+          </div>
 
           {/* # Links */}
-          <div
-            className="flex items-center gap-4 mt-4 pt-3"
-            style={{ borderTop: "1px solid rgba(61,17,6,0.2)" }}
-          >
-            {project.github && (
-              <a
-                href={project.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 text-label-sm uppercase tracking-wider font-bold transition-colors hover:text-[#3D1106]"
-                style={{ color: "#242120" }}
-              >
-                <span>{labels.githubBtn}</span>
-                <span className="material-symbols-outlined" style={{ fontSize: 14 }}>north_east</span>
-              </a>
-            )}
-            {project.demo && (
-              <a
-                href={project.demo}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 text-label-sm uppercase tracking-wider font-bold transition-colors hover:text-[#3D1106]"
-                style={{ color: "#242120" }}
-              >
-                <span>{labels.demoBtn}</span>
-                <span className="material-symbols-outlined" style={{ fontSize: 14 }}>north_east</span>
-              </a>
-            )}
-          </div>
+          {(project.github || project.demo) && (
+            <div
+              className="flex items-center gap-4 mt-4 pt-3"
+              style={{ borderTop: "1px solid rgba(61,17,6,0.2)" }}
+            >
+              {project.github && (
+                <a
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 text-label-sm uppercase tracking-wider font-bold transition-colors hover:text-[#3D1106]"
+                  style={{ color: "#242120" }}
+                >
+                  <span>{labels.githubBtn}</span>
+                  <span className="material-symbols-outlined" style={{ fontSize: 14 }}>north_east</span>
+                </a>
+              )}
+              {project.demo && (
+                <a
+                  href={project.demo}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 text-label-sm uppercase tracking-wider font-bold transition-colors hover:text-[#3D1106]"
+                  style={{ color: "#242120" }}
+                >
+                  <span>{labels.demoBtn}</span>
+                  <span className="material-symbols-outlined" style={{ fontSize: 14 }}>north_east</span>
+                </a>
+              )}
+            </div>
+          )}
         </div>
       </div>
     </article>
@@ -204,18 +242,15 @@ function ProjectCard({ project, icon, labels }) {
 
 // # Page Component
 export default function ProjectsPage() {
-  const [lang, setLang] = useState("EN");
-
-  useEffect(() => {
-    try {
-      const saved = window.localStorage.getItem("preferred_lang");
-      if (saved === "ID" || saved === "EN") setLang(saved);
-    } catch { /* ignore */ }
-  }, []);
+  const lang = useSyncExternalStore(subscribeLang, getLangSnapshot, getLangServerSnapshot);
 
   const handleSetLang = (l) => {
-    setLang(l);
-    try { window.localStorage.setItem("preferred_lang", l); } catch { /* ignore */ }
+    try {
+      window.localStorage.setItem("preferred_lang", l);
+      window.dispatchEvent(new Event("portfolio-lang-change"));
+    } catch {
+      /* ignore */
+    }
   };
 
   const labels = LABELS[lang] || LABELS.EN;
@@ -279,6 +314,7 @@ export default function ProjectsPage() {
                   contributionTitle: labels.contributionTitle,
                   githubBtn: labels.githubBtn,
                   demoBtn: labels.demoBtn,
+                  viewDetailsBtn: labels.viewDetailsBtn,
                 }}
               />
             ))}

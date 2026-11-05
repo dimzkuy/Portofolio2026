@@ -54,6 +54,7 @@ const CONTENT = {
       contributionTitle: "My Contribution",
       githubBtn: "[ GitHub Repo ]",
       demoBtn: "[ Live Demo ]",
+      viewDetailsBtn: "[ View Details ]",
     },
     experience: {
       index: "04",
@@ -281,6 +282,7 @@ const CONTENT = {
       contributionTitle: "Kontribusi Saya",
       githubBtn: "[ Repositori GitHub ]",
       demoBtn: "[ Demo Langsung ]",
+      viewDetailsBtn: "[ Detail Proyek ]",
     },
     github: {
       index: "03",
@@ -886,18 +888,20 @@ function ProjectCard({ project, icon, labels, aosDelay = 0 }) {
       }}
     >
       {/* # Screenshot / Project Image */}
-      <div
-        className="relative overflow-hidden flex flex-col items-center justify-center text-center bg-[#F5F1EF]"
+      <Link
+        href={`/projects/${project.id}`}
+        className="block group relative overflow-hidden flex flex-col items-center justify-center text-center bg-[#F5F1EF] focus:outline-none"
         style={{
           aspectRatio: "16/9",
           borderBottom: "1.5px solid #3D1106",
         }}
+        aria-label={`View ${project.title} details`}
       >
         {project.image ? (
           <img
             src={project.image}
             alt={project.title}
-            className="w-full h-full object-cover object-top select-none pointer-events-none"
+            className="w-full h-full object-cover object-top select-none transition-transform duration-300 group-hover:scale-[1.02]"
             draggable={false}
           />
         ) : (
@@ -933,10 +937,10 @@ function ProjectCard({ project, icon, labels, aosDelay = 0 }) {
         >
           {project.badge || "PROJECT"}
         </div>
-      </div>
+      </Link>
 
       {/* # Body */}
-      <div className="p-4 flex-1 flex flex-col justify-between">
+      <div className="p-4 flex-1 flex flex-col">
         <div>
           <div className="flex items-baseline justify-between mb-1">
             <h3 className="text-base font-semibold tracking-tight" style={{ color: "#242120", fontFamily: "var(--font-serif)" }}>
@@ -952,60 +956,75 @@ function ProjectCard({ project, icon, labels, aosDelay = 0 }) {
 
           {/* # Tech stack tags */}
           <div
-            className="flex items-center gap-1 flex-wrap mb-4 py-1.5"
+            className="flex items-center gap-1 flex-wrap mb-3 py-1.5"
             style={{ borderTop: "1px solid rgba(61,17,6,0.15)", borderBottom: "1px solid rgba(61,17,6,0.15)" }}
           >
             {(Array.isArray(project.tags) ? project.tags : Object.values(project.tags).flat()).map((t) => (
               <Tag key={t}>{t}</Tag>
             ))}
           </div>
+
+          {/* # View Details */}
+          <div className="mb-2">
+            <Link
+              href={`/projects/${project.id}`}
+              className="inline-flex items-center text-label-sm uppercase tracking-wider font-bold transition-colors hover:text-[#3D1106]"
+              style={{ color: "#3D1106" }}
+            >
+              <span>{labels.viewDetailsBtn || "[ View Details ]"}</span>
+            </Link>
+          </div>
         </div>
 
         {/* # Contribution block */}
         <div
-          className="pt-3 p-2.5 mt-1"
+          className="pt-3 p-2.5 mt-2 flex-1 flex flex-col justify-between"
           style={{
             borderTop: "1.5px solid #3D1106",
             background: "rgba(245,241,239,0.4)",
           }}
         >
-          <span className="text-label-sm uppercase tracking-wider font-bold block mb-1" style={{ color: "#3D1106" }}>
-            {labels.contributionTitle}
-          </span>
-          <p className="text-[12px] leading-relaxed" style={{ color: "#645d5a" }}>
-            {project.contribution}
-          </p>
+          <div>
+            <span className="text-label-sm uppercase tracking-wider font-bold block mb-1" style={{ color: "#3D1106" }}>
+              {labels.contributionTitle}
+            </span>
+            <p className="text-[12px] leading-relaxed" style={{ color: "#645d5a" }}>
+              {project.contribution}
+            </p>
+          </div>
 
           {/* # Links */}
-          <div
-            className="flex items-center gap-4 mt-4 pt-3"
-            style={{ borderTop: "1px solid rgba(61,17,6,0.2)" }}
-          >
-            {project.github && (
-              <a
-                href={project.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 text-label-sm uppercase tracking-wider font-bold transition-colors hover:text-[#3D1106]"
-                style={{ color: "#242120" }}
-              >
-                <span>{labels.githubBtn}</span>
-                <span className="material-symbols-outlined" style={{ fontSize: 14 }}>north_east</span>
-              </a>
-            )}
-            {project.demo && (
-              <a
-                href={project.demo}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 text-label-sm uppercase tracking-wider font-bold transition-colors hover:text-[#3D1106]"
-                style={{ color: "#242120" }}
-              >
-                <span>{labels.demoBtn}</span>
-                <span className="material-symbols-outlined" style={{ fontSize: 14 }}>north_east</span>
-              </a>
-            )}
-          </div>
+          {(project.github || project.demo) && (
+            <div
+              className="flex items-center gap-4 mt-4 pt-3"
+              style={{ borderTop: "1px solid rgba(61,17,6,0.2)" }}
+            >
+              {project.github && (
+                <a
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 text-label-sm uppercase tracking-wider font-bold transition-colors hover:text-[#3D1106]"
+                  style={{ color: "#242120" }}
+                >
+                  <span>{labels.githubBtn}</span>
+                  <span className="material-symbols-outlined" style={{ fontSize: 14 }}>north_east</span>
+                </a>
+              )}
+              {project.demo && (
+                <a
+                  href={project.demo}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 text-label-sm uppercase tracking-wider font-bold transition-colors hover:text-[#3D1106]"
+                  style={{ color: "#242120" }}
+                >
+                  <span>{labels.demoBtn}</span>
+                  <span className="material-symbols-outlined" style={{ fontSize: 14 }}>north_east</span>
+                </a>
+              )}
+            </div>
+          )}
         </div>
       </div>
     </article>
@@ -1332,6 +1351,7 @@ export default function Home() {
                   contributionTitle: t.projects.contributionTitle,
                   githubBtn: t.projects.githubBtn,
                   demoBtn: t.projects.demoBtn,
+                  viewDetailsBtn: t.projects.viewDetailsBtn,
                 }}
               />
             ))}
