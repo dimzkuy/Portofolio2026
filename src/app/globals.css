@@ -99,6 +99,17 @@
   box-sizing: border-box;
 }
 
+/* # Text Selection */
+::selection {
+  background-color: #3D1106;
+  color: #FFFFFF;
+}
+
+::-moz-selection {
+  background-color: #3D1106;
+  color: #FFFFFF;
+}
+
 html,
 body {
   margin: 0;
