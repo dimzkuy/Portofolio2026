@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useSyncExternalStore } from "react";
+import { useSyncExternalStore } from "react";
 import { certifications } from "@/data/certifications";
 import {
   SiGooglecloud,
@@ -91,10 +91,9 @@ export default function CertificationSection({ lang = "EN", content }) {
   const sectionIndex = content?.index || "07";
   const sectionTitle = content?.title || (isId ? "SERTIFIKASI" : "CERTIFICATIONS");
 
-  const [showAll, setShowAll] = useState(false);
   const currentYm = useCurrentYearMonth();
   const INITIAL_COUNT = 4;
-  const displayedItems = showAll ? certifications : certifications.slice(0, INITIAL_COUNT);
+  const displayedItems = certifications.slice(0, INITIAL_COUNT);
 
   return (
     <section
@@ -240,37 +239,26 @@ export default function CertificationSection({ lang = "EN", content }) {
         })}
       </div>
 
-      {/* # View More Certification Button (matches View All Projects button style) */}
-      {certifications.length > INITIAL_COUNT && (
-        <div className="mt-12 flex justify-center" data-aos="fade-up">
-          <button
-            type="button"
-            onClick={() => setShowAll(!showAll)}
-            className="inline-flex items-center gap-2 px-10 py-4 text-label-lg uppercase tracking-wider font-bold transition-all hover:translate-x-[1px] hover:translate-y-[1px] cursor-pointer"
-            style={{
-              background: "#3D1106",
-              color: "#fff",
-              border: "1.5px solid #3D1106",
-              boxShadow: "4px 4px 0px 0px rgba(61,17,6,0.35)",
-            }}
-            onMouseEnter={(e) => (e.currentTarget.style.boxShadow = "2px 2px 0px 0px rgba(61,17,6,0.35)")}
-            onMouseLeave={(e) => (e.currentTarget.style.boxShadow = "4px 4px 0px 0px rgba(61,17,6,0.35)")}
-          >
-            <span>
-              {showAll
-                ? isId
-                  ? "Tampilkan Lebih Sedikit"
-                  : "Show Less"
-                : isId
-                  ? "Lihat Semua Sertifikasi"
-                  : "View More Certification"}
-            </span>
-            <span className="material-symbols-outlined" style={{ fontSize: 18 }}>
-              {showAll ? "expand_less" : "expand_more"}
-            </span>
-          </button>
-        </div>
-      )}
+      {/* # View All Certifications Button (links to LinkedIn certifications) */}
+      <div className="mt-12 flex justify-center" data-aos="fade-up">
+        <a
+          href="https://www.linkedin.com/in/dcmargono/details/certifications/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 px-10 py-4 text-label-lg uppercase tracking-wider font-bold transition-all hover:translate-x-[1px] hover:translate-y-[1px]"
+          style={{
+            background: "#3D1106",
+            color: "#fff",
+            border: "1.5px solid #3D1106",
+            boxShadow: "4px 4px 0px 0px rgba(61,17,6,0.35)",
+          }}
+          onMouseEnter={(e) => (e.currentTarget.style.boxShadow = "2px 2px 0px 0px rgba(61,17,6,0.35)")}
+          onMouseLeave={(e) => (e.currentTarget.style.boxShadow = "4px 4px 0px 0px rgba(61,17,6,0.35)")}
+        >
+          <span>{isId ? "Lihat Semua Sertifikasi" : "View All Certifications"}</span>
+          <span className="material-symbols-outlined" style={{ fontSize: 18 }}>north_east</span>
+        </a>
+      </div>
     </section>
   );
 }

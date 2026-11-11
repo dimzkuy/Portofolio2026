@@ -225,18 +225,17 @@ export default function ProjectDetailView({ slug, initialProject, extraGallery =
         {/* # Primary Cover Image Showcase */}
         {project.image && (
           <div
-            className="relative overflow-hidden group bg-[#F5F1EF] mb-16"
+            className="relative overflow-hidden bg-[#F5F1EF] mb-16"
             style={{
               border: "1.5px solid #3D1106",
               boxShadow: "5px 5px 0px 0px #3D1106",
             }}
-
           >
             <div className="relative aspect-[16/9] w-full overflow-hidden">
               <img
                 src={project.image}
                 alt={project.title}
-                className="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-[1.01]"
+                className="w-full h-full object-cover object-top"
                 draggable={false}
               />
             </div>
