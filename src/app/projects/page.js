@@ -213,11 +213,10 @@ function ProjectCard({ project, icon, labels }) {
                   href={project.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 text-label-sm uppercase tracking-wider font-bold transition-colors hover:text-[#3D1106]"
+                  className="inline-flex items-center text-label-sm uppercase tracking-wider font-bold transition-colors hover:text-[#3D1106]"
                   style={{ color: "#242120" }}
                 >
                   <span>{labels.githubBtn}</span>
-                  <span className="material-symbols-outlined" style={{ fontSize: 14 }}>north_east</span>
                 </a>
               )}
               {project.demo && (

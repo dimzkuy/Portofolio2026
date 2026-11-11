@@ -42,10 +42,10 @@ export async function generateMetadata({ params }) {
   }
 
   return {
-    title: `${project.title} — Project Case Study | Dimas Cahyo Margono`,
+    title: `${project.title} - Project Details | Dimas Cahyo Margono`,
     description: project.description,
     openGraph: {
-      title: `${project.title} — Dimas Cahyo Margono`,
+      title: `${project.title} - Dimas Cahyo Margono`,
       description: project.description,
       images: project.image ? [{ url: project.image }] : [],
     },

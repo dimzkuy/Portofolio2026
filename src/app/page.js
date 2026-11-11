@@ -282,7 +282,7 @@ const CONTENT = {
       contributionTitle: "Kontribusi Saya",
       githubBtn: "[ Repositori GitHub ]",
       demoBtn: "[ Demo Langsung ]",
-      viewDetailsBtn: "[ Detail Proyek ]",
+      viewDetailsBtn: "[ Lihat Detail ]",
     },
     github: {
       index: "03",
@@ -888,20 +888,18 @@ function ProjectCard({ project, icon, labels, aosDelay = 0 }) {
       }}
     >
       {/* # Screenshot / Project Image */}
-      <Link
-        href={`/projects/${project.id}`}
-        className="block group relative overflow-hidden flex flex-col items-center justify-center text-center bg-[#F5F1EF] focus:outline-none"
+      <div
+        className="relative overflow-hidden flex flex-col items-center justify-center text-center bg-[#F5F1EF]"
         style={{
           aspectRatio: "16/9",
           borderBottom: "1.5px solid #3D1106",
         }}
-        aria-label={`View ${project.title} details`}
       >
         {project.image ? (
           <img
             src={project.image}
             alt={project.title}
-            className="w-full h-full object-cover object-top select-none transition-transform duration-300 group-hover:scale-[1.02]"
+            className="w-full h-full object-cover object-top select-none"
             draggable={false}
           />
         ) : (
@@ -937,7 +935,7 @@ function ProjectCard({ project, icon, labels, aosDelay = 0 }) {
         >
           {project.badge || "PROJECT"}
         </div>
-      </Link>
+      </div>
 
       {/* # Body */}
       <div className="p-4 flex-1 flex flex-col">
@@ -1004,11 +1002,10 @@ function ProjectCard({ project, icon, labels, aosDelay = 0 }) {
                   href={project.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 text-label-sm uppercase tracking-wider font-bold transition-colors hover:text-[#3D1106]"
+                  className="inline-flex items-center text-label-sm uppercase tracking-wider font-bold transition-colors hover:text-[#3D1106]"
                   style={{ color: "#242120" }}
                 >
                   <span>{labels.githubBtn}</span>
-                  <span className="material-symbols-outlined" style={{ fontSize: 14 }}>north_east</span>
                 </a>
               )}
               {project.demo && (
