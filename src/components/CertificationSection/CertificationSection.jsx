@@ -2,13 +2,6 @@
 
 import { useSyncExternalStore } from "react";
 import { certifications } from "@/data/certifications";
-import {
-  SiGooglecloud,
-  SiCisco,
-  SiComptia,
-  SiLinux,
-  SiCoursera,
-} from "react-icons/si";
 
 const MONTHS_EN = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
 const MONTHS_ID = ["JAN", "FEB", "MAR", "APR", "MEI", "JUN", "JUL", "AGU", "SEP", "OKT", "NOV", "DES"];
@@ -39,28 +32,6 @@ function useCurrentYearMonth() {
 function isDateExpired(expiresYm, currentYm) {
   if (!expiresYm || !currentYm) return false;
   return expiresYm < currentYm;
-}
-
-function getIssuerIcon(issuer, id) {
-  const lowerIssuer = (issuer || "").toLowerCase();
-  const lowerId = (id || "").toLowerCase();
-
-  if (lowerIssuer.includes("google") || lowerId.startsWith("gcp-")) {
-    return SiGooglecloud;
-  }
-  if (lowerIssuer.includes("cisco")) {
-    return SiCisco;
-  }
-  if (lowerIssuer.includes("comptia")) {
-    return SiComptia;
-  }
-  if (lowerId.includes("linux")) {
-    return SiLinux;
-  }
-  if (lowerIssuer.includes("coursera")) {
-    return SiCoursera;
-  }
-  return null;
 }
 
 function SectionHeader({ index, title, subtitle }) {
@@ -112,13 +83,12 @@ export default function CertificationSection({ lang = "EN", content }) {
         style={{ border: "1.5px solid #3D1106", boxShadow: "4px 4px 0px 0px #3D1106" }}
       >
         {displayedItems.map((c, idx) => {
-          const Icon = getIssuerIcon(c.issuer, c.id);
           const expired = isDateExpired(c.expires, currentYm);
 
           return (
             <div
               key={c.id}
-              className="p-6 md:p-10 grid grid-cols-1 md:grid-cols-12 gap-6 items-start md:items-center"
+              className="py-8 px-6 md:py-12 md:px-10 grid grid-cols-1 md:grid-cols-12 gap-6 items-start md:items-center"
               style={idx !== 0 ? { borderTop: "1.5px solid #3D1106" } : {}}
             >
               {/* # Left: Prefix, Title, Issuer, Dates & Credential ID */}
@@ -127,26 +97,22 @@ export default function CertificationSection({ lang = "EN", content }) {
                   {isId ? "SERTIFIKASI" : "CERTIFICATE"} {String(idx + 1).padStart(2, "0")}
                 </span>
 
-                {c.url ? (
-                  <a
-                    href={c.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-headline-md mt-0.5 leading-snug hover:text-[#3D1106] transition-colors"
-                    style={{ color: "#242120" }}
-                  >
-                    {c.title}
-                  </a>
-                ) : (
-                  <h3 className="text-headline-md mt-0.5 leading-snug" style={{ color: "#242120" }}>
-                    {c.title}
-                  </h3>
-                )}
+                <h3 className="text-headline-md mt-2 leading-snug" style={{ color: "#242120" }}>
+                  {c.title}
+                </h3>
 
                 <div className="flex items-center gap-2 mt-1">
-                  {Icon && (
-                    <span className="shrink-0" style={{ color: "#3D1106" }}>
-                      <Icon size={14} aria-hidden="true" />
+                  {(c.icon || c.icons) && (
+                    <span className="shrink-0 flex items-center justify-center w-4 h-4" aria-hidden="true">
+                      {typeof (c.icon || c.icons) === "string" ? (
+                        <img
+                          src={c.icon || c.icons}
+                          alt=""
+                          className="w-full h-full object-contain"
+                        />
+                      ) : (
+                        c.icon || c.icons
+                      )}
                     </span>
                   )}
                   <span className="text-body-md font-medium" style={{ color: "#716966" }}>

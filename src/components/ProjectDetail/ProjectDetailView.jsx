@@ -200,7 +200,6 @@ export default function ProjectDetailView({ slug, initialProject, extraGallery =
                 }}
               >
                 <span>{isId ? "Repositori GitHub" : "GitHub Repository"}</span>
-                <span className="material-symbols-outlined" style={{ fontSize: 14 }}>north_east</span>
               </a>
             )}
 

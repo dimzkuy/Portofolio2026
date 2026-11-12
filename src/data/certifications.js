@@ -2,11 +2,12 @@ export const certifications = [
     {
         id: "google-it-support",
         title: "Google IT Support",
-        issuer: "Google (Coursera)",
+        issuer: "Google",
         issued: "2026-09",
         expires: null,
         credentialId: "3HP41N1S3GSV",
         url: "https://www.coursera.org/account/accomplishments/professional-cert/3HP41N1S3GSV",
+        icon: "/assets/icons/certifications/google.png"
     },
     {
         id: "dicoding-google-cloud-engineer",
@@ -16,6 +17,7 @@ export const certifications = [
         expires: "2027-11",
         credentialId: "QLZ9VLED2X5D",
         url: "https://www.dicoding.com/certificates/QLZ9VLED2X5D",
+        icon: "/assets/icons/certifications/dicoding.png"
     },
     {
         id: "gcp-cloud-run-fundamentals",
@@ -25,6 +27,8 @@ export const certifications = [
         expires: null,
         credentialId: "26826993",
         url: "https://www.skills.google/public_profiles/ba29b56d-dbb5-4f2c-bd3f-983a3a2bd06e/badges/26826993",
+        icon: "/assets/icons/certifications/google.png"
+
     },
     {
         id: "dicoding-backend-google-cloud",
@@ -34,6 +38,8 @@ export const certifications = [
         expires: "2027-10",
         credentialId: "6RPNYJ7E5Z2M",
         url: "https://www.dicoding.com/certificates/6RPNYJ7E5Z2M",
+        icon: "/assets/icons/certifications/dicoding.png"
+
     },
     {
         id: "dicoding-ml-google-cloud",
@@ -43,15 +49,19 @@ export const certifications = [
         expires: "2027-12",
         credentialId: "MRZMY9J5RZYQ",
         url: "https://www.dicoding.com/certificates/MRZMY9J5RZYQ",
+        icon: "/assets/icons/certifications/dicoding.png"
+
     },
     {
         id: "coursera-cloud-developer-prep",
         title: "Preparing for Google Cloud Certification: Cloud Developer",
-        issuer: "Google (Coursera)",
+        issuer: "Google",
         issued: "2026-08",
         expires: null,
         credentialId: null,
         url: "https://www.coursera.org/account/accomplishments/professional-cert/H06Y0YDG548C",
+        icon: "/assets/icons/certifications/google.png"
+
     },
     {
         id: "gcp-app-dev-cloud-run",
