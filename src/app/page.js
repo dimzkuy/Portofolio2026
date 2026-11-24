@@ -143,7 +143,9 @@ const CONTENT = {
           mono: "CLOUD · PLATFORMS",
           title: "Cloud Platforms",
           tags: [
-            { label: "Google Cloud Platform", icon: "siGooglecloud" },
+            { label: "Google Cloud Run", icon: "siGooglecloud" },
+            { label: "Google Cloud Storage", icon: "siGooglecloud" },
+            { label: "Firebase App Hosting", icon: "siFirebase" },
             { label: "Firebase", icon: "siFirebase" },
             { label: "Vercel", icon: "siVercel" },
           ],
@@ -405,7 +407,7 @@ const CONTENT = {
         {
           index: "06",
           mono: "TOOLS · WORKFLOW",
-          title: "Development Tools",
+          title: "Alat Pengembangan",
           tags: [
             { label: "Git", icon: "siGit" },
             { label: "GitHub", icon: "siGithub" },
