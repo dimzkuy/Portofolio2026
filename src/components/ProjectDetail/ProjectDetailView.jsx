@@ -339,7 +339,7 @@ export default function ProjectDetailView({ slug, initialProject, extraGallery =
             {galleryImages.map((img, idx) => (
               <div
                 key={idx}
-                className="group bg-white overflow-hidden cursor-pointer transition-transform hover:-translate-y-1"
+                className="bg-white overflow-hidden cursor-pointer"
                 style={{
                   border: "1.5px solid #3D1106",
                   boxShadow: "3.5px 3.5px 0px 0px #3D1106",
@@ -350,7 +350,7 @@ export default function ProjectDetailView({ slug, initialProject, extraGallery =
                   <img
                     src={img.src}
                     alt={img.alt || project.title}
-                    className="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-[1.02]"
+                    className="w-full h-full object-cover object-top"
                     draggable={false}
                   />
                 </div>
@@ -383,11 +383,11 @@ export default function ProjectDetailView({ slug, initialProject, extraGallery =
         )}
 
         {/* # Previous / Next Project Navigation Banner */}
-        <div className="mt-16 flex items-center justify-between flex-wrap gap-4">
+        <div className="mt-16 grid grid-cols-2 gap-3 sm:flex sm:items-center sm:justify-between sm:gap-4">
           {adjacent.prev ? (
             <Link
               href={`/projects/${adjacent.prev.id}`}
-              className="inline-flex items-center gap-2 px-6 py-3 text-label-sm uppercase tracking-wider font-bold transition-all hover:translate-x-[1px] hover:translate-y-[1px]"
+              className="inline-flex items-center justify-center sm:justify-start gap-1.5 sm:gap-2 px-3 py-2.5 sm:px-6 sm:py-3 text-[11px] sm:text-label-sm uppercase tracking-normal sm:tracking-wider font-bold text-center transition-all hover:translate-x-[1px] hover:translate-y-[1px]"
               style={{
                 background: "#3D1106",
                 color: "#fff",
@@ -397,7 +397,7 @@ export default function ProjectDetailView({ slug, initialProject, extraGallery =
               onMouseEnter={(e) => (e.currentTarget.style.boxShadow = "2px 2px 0px 0px rgba(61,17,6,0.4)")}
               onMouseLeave={(e) => (e.currentTarget.style.boxShadow = "3px 3px 0px 0px rgba(61,17,6,0.4)")}
             >
-              <span className="material-symbols-outlined" style={{ fontSize: 16 }}>arrow_back</span>
+              <span className="material-symbols-outlined shrink-0" style={{ fontSize: 16 }}>arrow_back</span>
               <span>{isId ? "Proyek Sebelumnya" : "Previous Project"}</span>
             </Link>
           ) : (
@@ -407,7 +407,7 @@ export default function ProjectDetailView({ slug, initialProject, extraGallery =
           {adjacent.next && (
             <Link
               href={`/projects/${adjacent.next.id}`}
-              className="inline-flex items-center gap-2 px-6 py-3 text-label-sm uppercase tracking-wider font-bold transition-all hover:translate-x-[1px] hover:translate-y-[1px] ml-auto"
+              className="inline-flex items-center justify-center sm:justify-end gap-1.5 sm:gap-2 px-3 py-2.5 sm:px-6 sm:py-3 text-[11px] sm:text-label-sm uppercase tracking-normal sm:tracking-wider font-bold text-center transition-all hover:translate-x-[1px] hover:translate-y-[1px] sm:ml-auto"
               style={{
                 background: "#3D1106",
                 color: "#fff",
@@ -418,7 +418,7 @@ export default function ProjectDetailView({ slug, initialProject, extraGallery =
               onMouseLeave={(e) => (e.currentTarget.style.boxShadow = "3px 3px 0px 0px rgba(61,17,6,0.4)")}
             >
               <span>{isId ? "Proyek Selanjutnya" : "Next Project"}</span>
-              <span className="material-symbols-outlined" style={{ fontSize: 16 }}>arrow_forward</span>
+              <span className="material-symbols-outlined shrink-0" style={{ fontSize: 16 }}>arrow_forward</span>
             </Link>
           )}
         </div>
